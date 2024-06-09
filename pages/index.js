@@ -9,7 +9,9 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const [isClick, setClick] = useState(false);
-  const [index, setIndex] = useState(0)
+  const [index, setIndex] = useState(0);
+  const [img, setImage] = useState("/sad.png");
+  const [battaryIndex, setBattaryIndesx] = useState("/1.webp");
   const quotes = [
     "If anyone can do this, you can, I believe in you",
     "You are one of the strongest people I have ever met. This won’t beat you.",
@@ -17,7 +19,7 @@ export default function Home() {
     "Look at how far you have come already. You’re stronger than any adversity. You’ve got this.",
     "I know it's hard right now, but it's worth doing. Believe in yourself.",
     "You’re prepared and ready. Nothing can stand in your way.",
-    "I love you",
+    "That's it I just want to say that I'm here for supporting you and I really really really really love you",
   ];
 
   const handleClick = () => {
@@ -38,14 +40,24 @@ export default function Home() {
           animate__faster
         `,
         },
+        customClass: {
+          title: styles.textHead,
+          confirmButton: styles.buttonConfirm,
+        },
       });
-   
-      setClick(false)
+
+      setClick(false);
     }, 1000);
-    if(index + 1 === 7)
-      setIndex(0)
-    else
-    setIndex(index + 1); 
+    if (index + 1 === 7) setIndex(6);
+    else setIndex(index + 1);
+    if (index + 1 === 2) {
+      setBattaryIndesx("/2.webp");
+      setImage("/happy.png");
+    }
+    if (index + 1 === 5) {
+      setBattaryIndesx("/3.webp");
+      setImage("/doctor.png");
+    }
   };
   return (
     <>
@@ -58,11 +70,18 @@ export default function Home() {
       <main className={styles.main}>
         <div className={styles.content}>
           <div className={styles.images}>
-            <Image src="/sad.png" width={150} height={150} alt="sad" />
-            <Image src="/1.webp" width={100} height={50} alt="1" />
+            <Image
+              src={img}
+              width={150}
+              height={index + 1 >= 6 ? 300 : 150}
+              alt="sad"
+            />
+            <Image src={battaryIndex} width={100} height={50} alt="1" />
           </div>
           <div className={styles.heartContent}>
             <h1>حاسس بانعدام الطاقة والشغف اضغط القلب</h1>
+            {index < 6 && index !== 0 && <p>رجاع اضغط كمان مرة</p>}
+            {index === 6 && <p>خالص بس حبيت ابهجك شوي ولو  بهل طريقة بس جد ما بحب اشوفك تعبانة او حزينة</p>}
             <Heart
               isClick={isClick}
               onClick={() => {

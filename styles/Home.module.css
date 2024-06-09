@@ -6,7 +6,7 @@
 
   padding: 2rem;
   min-height: 100vh;
-  background-color: #fff;
+  background-color: rgb(255, 245, 246);
   color: #000;
 }
 .images{
@@ -26,6 +26,20 @@
 }
 .heartContent > h1{
    text-align: center;
+   font-family: sans-serif;
    width: 100%;
    color: rgb(223, 37, 99);
+}
+.heartContent > p {
+    font-family: sans-serif;
+   color: rgb(223, 37, 99);
+   text-align: center;
+}
+.textHead{
+   font-size: 25px;
+   font-family: sans-serif;
+   color: rgb(223, 37, 99);
+}
+.buttonConfirm{
+   background-color: pink;
 }
