@@ -19,7 +19,7 @@ export default function Home() {
     "Look at how far you have come already. You’re stronger than any adversity. You’ve got this.",
     "I know it's hard right now, but it's worth doing. Believe in yourself.",
     "You’re prepared and ready. Nothing can stand in your way.",
-    "That's it I just want to say that I'm here for supporting you and I really really really really love you",
+    "That's it I just want to say that I'm here for supporting you",
   ];
 
   const handleClick = () => {
@@ -52,12 +52,14 @@ export default function Home() {
     else setIndex(index + 1);
     if (index + 1 === 2) {
       setBattaryIndesx("/2.webp");
-      setImage("/happy.png");
     }
     if (index + 1 === 5) {
       setBattaryIndesx("/3.webp");
       setImage("/doctor.png");
     }
+    if(index + 1 === 3) 
+      
+      setImage("/happy.png");
   };
   return (
     <>
@@ -81,7 +83,7 @@ export default function Home() {
           <div className={styles.heartContent}>
             <h1>حاسس بانعدام الطاقة والشغف اضغط القلب</h1>
             {index < 6 && index !== 0 && <p>رجاع اضغط كمان مرة</p>}
-            {index === 6 && <p>خالص بس حبيت ابهجك شوي ولو  بهل طريقة بس جد ما بحب اشوفك تعبانة او حزينة</p>}
+            {index >= 6 && <p>خالص بس حبيت ابهجك شوي وما عرفت شلون ففكرت بهل طريقة بس جد ما بحب اشوفك تعبانة او حزينة</p>}
             <Heart
               isClick={isClick}
               onClick={() => {
