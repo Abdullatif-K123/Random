@@ -2,10 +2,51 @@ import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
-
+import Heart from "react-animated-heart";
+import { useState } from "react";
+import Swal from "sweetalert2";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const [isClick, setClick] = useState(false);
+  const [index, setIndex] = useState(0)
+  const quotes = [
+    "If anyone can do this, you can, I believe in you",
+    "You are one of the strongest people I have ever met. This won’t beat you.",
+    "Don't worry. You’ve got this. I support you and I'll continue fighting to win you.",
+    "Look at how far you have come already. You’re stronger than any adversity. You’ve got this.",
+    "I know it's hard right now, but it's worth doing. Believe in yourself.",
+    "You’re prepared and ready. Nothing can stand in your way.",
+    "I love you",
+  ];
+
+  const handleClick = () => {
+    setTimeout(() => {
+      Swal.fire({
+        title: quotes[index],
+        showClass: {
+          popup: `
+          animate__animated
+          animate__fadeInUp
+          animate__faster
+        `,
+        },
+        hideClass: {
+          popup: `
+          animate__animated
+          animate__fadeOutDown
+          animate__faster
+        `,
+        },
+      });
+   
+      setClick(false)
+    }, 1000);
+    if(index + 1 === 7)
+      setIndex(0)
+    else
+    setIndex(index + 1); 
+  };
   return (
     <>
       <Head>
@@ -14,99 +55,22 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={`${styles.main} ${inter.className}`}>
-        <div className={styles.description}>
-          <p>
-            Get started by editing&nbsp;
-            <code className={styles.code}>pages/index.js</code>
-          </p>
-          <div>
-            <a
-              href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              By{" "}
-              <Image
-                src="/vercel.svg"
-                alt="Vercel Logo"
-                className={styles.vercelLogo}
-                width={100}
-                height={24}
-                priority
-              />
-            </a>
+      <main className={styles.main}>
+        <div className={styles.content}>
+          <div className={styles.images}>
+            <Image src="/sad.png" width={150} height={150} alt="sad" />
+            <Image src="/1.webp" width={100} height={50} alt="1" />
           </div>
-        </div>
-
-        <div className={styles.center}>
-          <Image
-            className={styles.logo}
-            src="/next.svg"
-            alt="Next.js Logo"
-            width={180}
-            height={37}
-            priority
-          />
-        </div>
-
-        <div className={styles.grid}>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2>
-              Docs <span>-&gt;</span>
-            </h2>
-            <p>
-              Find in-depth information about Next.js features and&nbsp;API.
-            </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2>
-              Learn <span>-&gt;</span>
-            </h2>
-            <p>
-              Learn about Next.js in an interactive course with&nbsp;quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2>
-              Templates <span>-&gt;</span>
-            </h2>
-            <p>
-              Discover and deploy boilerplate example Next.js&nbsp;projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2>
-              Deploy <span>-&gt;</span>
-            </h2>
-            <p>
-              Instantly deploy your Next.js site to a shareable URL
-              with&nbsp;Vercel.
-            </p>
-          </a>
+          <div className={styles.heartContent}>
+            <h1>حاسس بانعدام الطاقة والشغف اضغط القلب</h1>
+            <Heart
+              isClick={isClick}
+              onClick={() => {
+                setClick(!isClick);
+                handleClick();
+              }}
+            />
+          </div>
         </div>
       </main>
     </>
