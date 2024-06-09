@@ -23,6 +23,7 @@
    flex-direction: column;
    align-items: center;
    gap: 10px;
+   -webkit-tap-highlight-color: transparent; /* Disable tap highlight */
 }
 .heartContent > h1{
    text-align: center;
