@@ -20,10 +20,10 @@ export default function Home() {
   const [rose,setRose] = useState(false);
   const quotes = [
     "إنتي قدها إن شاء الله.",
-    "If anyone can do this, you can, I believe in you",
     "انا مأدرك التعب النفسي والجسدي يلي فيو انتي بس وصلتي لهل مطرح واكيد تعبتي كتير لحتى وصلتيلو والظروف الحالية ابدا مارح تمنعك من انك تحققي حلمك وتابعي مسيرك ف ابقي عم تبتسمي لانو الابتسامة بتلبقلك وبلبقلك كلشي حلو.",
     "الازهار تحتاج وقت لتزهر وكذلك انتي",
-    "I know it's hard right now, but it's worth doing. Believe in yourself.",
+    "If anyone can do this, you can, I believe in you",
+    "توقع خيراً ، مهما كثُر البلاء, بس قولي انتي بقدر اقول عنك عنوان التفائل والاشراق",
     "You’re prepared and ready. Nothing can stand in your way.",
     "That's it I just want to say that I'm here for supporting you, لا تضغطي القلب مرة التانية",
   ];
