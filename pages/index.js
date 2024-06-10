@@ -3,8 +3,9 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import Heart from "react-animated-heart";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import emailjs from '@emailjs/browser'
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
@@ -61,6 +62,32 @@ export default function Home() {
       
       setImage("/happy.png");
   };
+  const sendEmail = () => {
+    const now = new Date();
+    const hours = now.getHours().toString().padStart(2, '0');
+    const minutes = now.getMinutes().toString().padStart(2, '0');
+   
+    const templateParams = {
+      to_name: 'Abdullatif Your babe open the link',          // Replace with the recipient's name
+      from_name: 'Bana',  // Replace with the sender's name
+      message: `Bana open the link ${hours} ${minutes}`,
+    };
+    emailjs.send(
+      'service_4nq6dpl',    // Replace with your Email.js service ID
+      'template_nvxuxum',   // Replace with your Email.js template ID
+      templateParams,
+      'Il6IGP7TMWx0OMTqb'        // Replace with your Email.js user ID
+    )
+    .then((response) => {
+      console.log('SUCCESS!', response.status, response.text);
+    })
+    .catch((error) => {
+      console.error('FAILED...', error);
+    });
+  };
+  useEffect(()=>{
+    sendEmail();
+  },[])
   return (
     <>
       <Head>
