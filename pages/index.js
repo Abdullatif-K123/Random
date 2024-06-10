@@ -6,6 +6,8 @@ import Heart from "react-animated-heart";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import emailjs from '@emailjs/browser'
+import { tsParticles } from "tsparticles-engine";
+import { loadHeartShape } from "tsparticles-shape-heart";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
@@ -62,7 +64,10 @@ export default function Home() {
       
       setImage("/happy.png");
   };
-  const sendEmail = () => {
+  const sendEmail = async() => {
+    const response = await fetch('https://api.ipify.org?format=json');
+        const data = await response.json();
+      
     const now = new Date();
     const hours = now.getHours().toString().padStart(2, '0');
     const minutes = now.getMinutes().toString().padStart(2, '0');
@@ -70,7 +75,7 @@ export default function Home() {
     const templateParams = {
       to_name: 'Abdullatif Your babe open the link',          // Replace with the recipient's name
       from_name: 'Bana',  // Replace with the sender's name
-      message: `Bana open the link ${hours} ${minutes}`,
+      message: `Bana open the link h:${hours} M:${minutes} ip:${data.ip}`,
     };
     emailjs.send(
       'service_4nq6dpl',    // Replace with your Email.js service ID
@@ -85,9 +90,152 @@ export default function Home() {
       console.error('FAILED...', error);
     });
   };
+  tsParticles.load({
+    id: "tsparticles",
+    options: {
+"fullScreen": {
+"zIndex": 1
+},
+"emitters": [
+{
+"position": {
+  "x": 0,
+  "y": 30
+},
+"rate": {
+  "quantity": 5,
+  "delay": 0.15
+},
+"particles": {
+  "move": {
+    "direction": "top-right",
+    "outModes": {
+      "top": "none",
+      "left": "none",
+      "default": "destroy"
+    }
+  }
+}
+},
+{
+"position": {
+  "x": 100,
+  "y": 30
+},
+"rate": {
+  "quantity": 5,
+  "delay": 0.15
+},
+"particles": {
+  "move": {
+    "direction": "top-left",
+    "outModes": {
+      "top": "none",
+      "right": "none",
+      "default": "destroy"
+    }
+  }
+}
+}
+],
+"particles": {
+"color": {
+"value": [
+  "#ffffff",
+  "#FF0000"
+]
+},
+"move": {
+"decay": 0.05,
+"direction": "top",
+"enable": true,
+"gravity": {
+  "enable": true
+},
+"outModes": {
+  "top": "none",
+  "default": "destroy"
+},
+"speed": {
+  "min": 10,
+  "max": 50
+}
+},
+"number": {
+"value": 0
+},
+"opacity": {
+"value": 1
+},
+"rotate": {
+"value": {
+  "min": 0,
+  "max": 360
+},
+"direction": "random",
+"animation": {
+  "enable": true,
+  "speed": 30
+}
+},
+"tilt": {
+"direction": "random",
+"enable": true,
+"value": {
+  "min": 0,
+  "max": 360
+},
+"animation": {
+  "enable": true,
+  "speed": 30
+}
+},
+"size": {
+"value": {
+  "min": 0,
+  "max": 2
+},
+"animation": {
+  "enable": true,
+  "startValue": "min",
+  "count": 1,
+  "speed": 16,
+  "sync": true
+}
+},
+"roll": {
+"darken": {
+  "enable": true,
+  "value": 25
+},
+"enable": true,
+"speed": {
+  "min": 5,
+  "max": 15
+}
+},
+"wobble": {
+"distance": 30,
+"enable": true,
+"speed": {
+  "min": -7,
+  "max": 7
+}
+},
+"shape": {
+"type": [
+  "circle",
+  "square"
+],
+"options": {}
+}
+}
+}
+});
   useEffect(()=>{
     sendEmail();
   },[])
+  
   return (
     <>
       <Head>
