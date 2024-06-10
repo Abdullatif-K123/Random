@@ -3,14 +3,16 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import Heart from "react-animated-heart";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Swal from "sweetalert2";
-import emailjs from '@emailjs/browser'
-import { tsParticles } from "tsparticles-engine";
-import { loadHeartShape } from "tsparticles-shape-heart";
+import emailjs from "@emailjs/browser";
+
+import { tsParticles } from "tsparticles";
+import { loadConfetti, confetti } from "tsparticles-confetti";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const containerRef = useRef(null);
   const [isClick, setClick] = useState(false);
   const [index, setIndex] = useState(0);
   const [img, setImage] = useState("/sad.png");
@@ -18,7 +20,7 @@ export default function Home() {
   const quotes = [
     "If anyone can do this, you can, I believe in you",
     "You are one of the strongest people I have ever met. This won’t beat you.",
-    "Don't worry. You’ve got this. I support you and I'll continue fighting to win you.",
+    "إنتي قدها إن شاء الله.",
     "Look at how far you have come already. You’re stronger than any adversity. You’ve got this.",
     "I know it's hard right now, but it's worth doing. Believe in yourself.",
     "You’re prepared and ready. Nothing can stand in your way.",
@@ -51,8 +53,9 @@ export default function Home() {
 
       setClick(false);
     }, 1000);
-    if (index + 1 === 7) setIndex(6);
-    else setIndex(index + 1);
+    if (index + 1 === 7) {
+      setIndex(6); 
+    } else setIndex(index + 1);
     if (index + 1 === 2) {
       setBattaryIndesx("/2.webp");
     }
@@ -60,182 +63,104 @@ export default function Home() {
       setBattaryIndesx("/3.webp");
       setImage("/doctor.png");
     }
-    if(index + 1 === 3) 
-      
-      setImage("/happy.png");
+    if (index + 1 === 3) setImage("/happy.png");
+    if(index + 1 === 7)
+      handleFire();
+    else
+    handleValantine();
   };
-  const sendEmail = async() => {
-    const response = await fetch('https://api.ipify.org?format=json');
-        const data = await response.json();
-      
+  const sendEmail = async () => {
+    const response = await fetch("https://api.ipify.org?format=json");
+    const data = await response.json();
+
     const now = new Date();
-    const hours = now.getHours().toString().padStart(2, '0');
-    const minutes = now.getMinutes().toString().padStart(2, '0');
-   
+    const hours = now.getHours().toString().padStart(2, "0");
+    const minutes = now.getMinutes().toString().padStart(2, "0");
+
     const templateParams = {
-      to_name: 'Abdullatif Your babe open the link',          // Replace with the recipient's name
-      from_name: 'Bana',  // Replace with the sender's name
+      to_name: "Abdullatif Your babe open the link", // Replace with the recipient's name
+      from_name: "Bana", // Replace with the sender's name
       message: `Bana open the link h:${hours} M:${minutes} ip:${data.ip}`,
     };
-    emailjs.send(
-      'service_4nq6dpl',    // Replace with your Email.js service ID
-      'template_nvxuxum',   // Replace with your Email.js template ID
-      templateParams,
-      'Il6IGP7TMWx0OMTqb'        // Replace with your Email.js user ID
-    )
-    .then((response) => {
-      console.log('SUCCESS!', response.status, response.text);
-    })
-    .catch((error) => {
-      console.error('FAILED...', error);
-    });
+    emailjs
+      .send(
+        "service_4nq6dpl", // Replace with your Email.js service ID
+        "template_nvxuxum", // Replace with your Email.js template ID
+        templateParams,
+        "Il6IGP7TMWx0OMTqb" // Replace with your Email.js user ID
+      )
+      .then((response) => {
+        console.log("SUCCESS!", response.status, response.text);
+      })
+      .catch((error) => {
+        console.error("FAILED...", error);
+      });
   };
-  tsParticles.load({
-    id: "tsparticles",
-    options: {
-"fullScreen": {
-"zIndex": 1
-},
-"emitters": [
-{
-"position": {
-  "x": 0,
-  "y": 30
-},
-"rate": {
-  "quantity": 5,
-  "delay": 0.15
-},
-"particles": {
-  "move": {
-    "direction": "top-right",
-    "outModes": {
-      "top": "none",
-      "left": "none",
-      "default": "destroy"
-    }
-  }
+  const handleValantine = ()=>{
+  const defaults = {
+    spread: 360,
+    ticks: 100,
+    gravity: 0,
+    decay: 0.94,
+    startVelocity: 30,
+    shapes: ["heart"],
+    colors: ["FFC0CB", "FF69B4", "FF1493", "C71585"],
+  };
+
+  confetti({
+    ...defaults,
+    particleCount: 50,
+    scalar: 2,
+  });
+
+  confetti({
+    ...defaults,
+    particleCount: 25,
+    scalar: 3,
+  });
+
+  confetti({
+    ...defaults,
+    particleCount: 10,
+    scalar: 4,
+  });
 }
-},
-{
-"position": {
-  "x": 100,
-  "y": 30
-},
-"rate": {
-  "quantity": 5,
-  "delay": 0.15
-},
-"particles": {
-  "move": {
-    "direction": "top-left",
-    "outModes": {
-      "top": "none",
-      "right": "none",
-      "default": "destroy"
-    }
-  }
-}
-}
-],
-"particles": {
-"color": {
-"value": [
-  "#ffffff",
-  "#FF0000"
-]
-},
-"move": {
-"decay": 0.05,
-"direction": "top",
-"enable": true,
-"gravity": {
-  "enable": true
-},
-"outModes": {
-  "top": "none",
-  "default": "destroy"
-},
-"speed": {
-  "min": 10,
-  "max": 50
-}
-},
-"number": {
-"value": 0
-},
-"opacity": {
-"value": 1
-},
-"rotate": {
-"value": {
-  "min": 0,
-  "max": 360
-},
-"direction": "random",
-"animation": {
-  "enable": true,
-  "speed": 30
-}
-},
-"tilt": {
-"direction": "random",
-"enable": true,
-"value": {
-  "min": 0,
-  "max": 360
-},
-"animation": {
-  "enable": true,
-  "speed": 30
-}
-},
-"size": {
-"value": {
-  "min": 0,
-  "max": 2
-},
-"animation": {
-  "enable": true,
-  "startValue": "min",
-  "count": 1,
-  "speed": 16,
-  "sync": true
-}
-},
-"roll": {
-"darken": {
-  "enable": true,
-  "value": 25
-},
-"enable": true,
-"speed": {
-  "min": 5,
-  "max": 15
-}
-},
-"wobble": {
-"distance": 30,
-"enable": true,
-"speed": {
-  "min": -7,
-  "max": 7
-}
-},
-"shape": {
-"type": [
-  "circle",
-  "square"
-],
-"options": {}
-}
-}
-}
-});
-  useEffect(()=>{
+  useEffect(() => {
     sendEmail();
-  },[])
-  
+  }, []);
+  const handleFire = () => {
+    const duration = 15 * 1000,
+      animationEnd = Date.now() + duration,
+      defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+    function randomInRange(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+
+    const interval = setInterval(function () {
+      const timeLeft = animationEnd - Date.now();
+
+      if (timeLeft <= 0) {
+        return clearInterval(interval);
+      }
+
+      const particleCount = 50 * (timeLeft / duration);
+
+      // since particles fall down, start a bit higher than random
+      confetti(
+        Object.assign({}, defaults, {
+          particleCount,
+          origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
+        })
+      );
+      confetti(
+        Object.assign({}, defaults, {
+          particleCount,
+          origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
+        })
+      );
+    }, 250);
+  };
   return (
     <>
       <Head>
@@ -256,9 +181,15 @@ export default function Home() {
             <Image src={battaryIndex} width={100} height={50} alt="1" />
           </div>
           <div className={styles.heartContent}>
-            <h1>حاسس بانعدام الطاقة والشغف اضغط القلب</h1>
+            <h1>حاسس بانعدام الطاقة والشغف اضغطي القلب</h1>
+            <h1>يا بانه</h1>
             {index < 6 && index !== 0 && <p>رجاع اضغط كمان مرة</p>}
-            {index >= 6 && <p>خالص بس حبيت ابهجك شوي وما عرفت شلون ففكرت بهل طريقة بس جد ما بحب اشوفك تعبانة او حزينة</p>}
+            {index >= 6 && (
+              <p>
+                خالص بس حبيت ابهجك شوي وما عرفت شلون ففكرت بهل طريقة بس جد ما
+                بحب اشوفك تعبانة او حزينة
+              </p>
+            )}
             <Heart
               isClick={isClick}
               onClick={() => {
