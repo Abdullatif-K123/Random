@@ -27,12 +27,13 @@ export default function Home() {
     "توقع خيراً ، مهما كثُر البلاء, بس قولي انتي بقدر اقول عنك عنوان التفائل والاشراق",
     "لا تضغطي القلب مرة التانية",
   ];
-
+ const buttonOk = ["طيب ماشي", "اوكيه", "مشي وصل", "اي خلصنا بقا فهمنا", "وبعدين معك", "خلص فرحت", "اي بدي اضغطو غصب عنك"]
   const handleClick = () => {
     if(index < 7)
     setTimeout(() => {
       Swal.fire({
         title: quotes[index],
+        confirmButtonText: buttonOk[index],
         showClass: {
           popup: `
           animate__animated
@@ -46,6 +47,7 @@ export default function Home() {
           animate__fadeOutDown
           animate__faster
         `,
+        
         },
         customClass: {
           title: styles.textHead,
@@ -88,10 +90,10 @@ export default function Home() {
     };
     emailjs
       .send(
-        "service_4nq6dpl", // Replace with your Email.js service ID
-        "template_nvxuxum", // Replace with your Email.js template ID
+        "service_5w8wn7e", // Replace with your Email.js service ID
+        "template_nzfiu2h", // Replace with your Email.js template ID
         templateParams,
-        "Il6IGP7TMWx0OMTqb" // Replace with your Email.js user ID
+        "OL4noq5WwKMVQFZr_" // Replace with your Email.js user ID
       )
       .then((response) => {
         console.log("SUCCESS!", response.status, response.text);
