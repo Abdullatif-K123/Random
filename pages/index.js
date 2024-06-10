@@ -216,7 +216,18 @@ export default function Home() {
               src="/rose.png"
               width={300}
               height={  350  }
-              alt="sad"
+              alt="rose"
+            />
+             </div>
+             <div className={styles.heartContent}>
+            <h1>وهي كمان شوكولا</h1>
+            </div>
+          <div className={styles.images}>
+            <Image
+              src="/chocolate.png"
+              width={250}
+              height={ 200  }
+              alt="chocolate"
             />
              </div>
             
