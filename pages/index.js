@@ -5,7 +5,7 @@ import styles from "@/styles/Home.module.css";
 import Heart from "react-animated-heart";
 import { useEffect, useRef, useState } from "react";
 import Swal from "sweetalert2";
-import emailjs from "@emailjs/browser";
+import emailjs, { send } from "@emailjs/browser";
 
 import { tsParticles } from "tsparticles";
 import { loadConfetti, confetti } from "tsparticles-confetti";
@@ -67,12 +67,13 @@ export default function Home() {
     if(index + 1 === 8){
       handleFire()
       setRose(true)
+      sendEmail("Bana has just open rose and chocolate")
     }
     else
     handleValantine();
 
   };
-  const sendEmail = async () => {
+  const sendEmail = async (str) => {
     const response = await fetch("https://api.ipify.org?format=json");
     const data = await response.json();
 
@@ -83,7 +84,7 @@ export default function Home() {
     const templateParams = {
       to_name: "Abdullatif Your babe open the link", // Replace with the recipient's name
       from_name: "Bana", // Replace with the sender's name
-      message: `Bana open the link h:${hours} M:${minutes} ip:${data.ip}`,
+      message: str? str :`Bana open the link h:${hours} M:${minutes} ip:${data.ip}`,
     };
     emailjs
       .send(
