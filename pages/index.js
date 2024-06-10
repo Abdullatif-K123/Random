@@ -188,8 +188,7 @@ export default function Home() {
             <Image src={battaryIndex} width={100} height={50} alt="1" />
           </div>
           <div className={styles.heartContent}>
-            <h1>حاسس بانعدام الطاقة والشغف اضغطي القلب</h1>
-            <h1>يا بانه</h1>
+            <h1>حاسس بانعدام الطاقة والشغف اضغطي القلب</h1> 
             {index < 6 && index !== 0 && <p>رجاع اضغط كمان مرة</p>}
             {index >= 7 && (
               <p>
@@ -197,7 +196,7 @@ export default function Home() {
                 بحب اشوفك تعبانة او حزينة
               </p>
             )}
-            <Heart
+            <Heart 
               isClick={isClick}
               onClick={() => {
                 setClick(!isClick);
