@@ -22,7 +22,7 @@ export default function Home() {
     "إنتي قدها إن شاء الله.",
     "If anyone can do this, you can, I believe in you",
     "انا مأدرك التعب النفسي والجسدي يلي فيو انتي بس وصلتي لهل مطرح واكيد تعبتي كتير لحتى وصلتيلو والظروف الحالية ابدا مارح تمنعك من انك تحققي حلمك وتابعي مسيرك ف ابقي عم تبتسمي لانو الابتسامة بتلبقلك وبلبقلك كلشي حلو.",
-    "Look at how far you have come already. You’re stronger than any adversity. You’ve got this.",
+    "الازهار تحتاج وقت لتزهر وكذلك انتي",
     "I know it's hard right now, but it's worth doing. Believe in yourself.",
     "You’re prepared and ready. Nothing can stand in your way.",
     "That's it I just want to say that I'm here for supporting you, لا تضغطي القلب مرة التانية",
