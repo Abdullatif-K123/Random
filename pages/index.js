@@ -199,22 +199,7 @@ export default function Home() {
         requestAnimationFrame(frame);
       }
     })();
-  }; 
-  // function createHeart() {
-  //   const heart = document.createElement("i");
-  //   heart.className = "fa-solid fa-heart";
-  //   heart.style.left = (Math.random() * 100) + "vw";
-  //   heart.style.animationDuration = (Math.random() * 3) + 2 + "s"
-  //   body.appendChild(heart);
-  // }
-  // setInterval(createHeart, 1000);
-  // setInterval(function name(params) {
-  //   var heartArr = document.querySelectorAll(".fa-heart")
-  //   if (heartArr.length > 200) {
-  //     heartArr[0].remove()
-  //   }
-
-  // }, 100);
+  };  
   return (
     <>
       <Head>
@@ -279,7 +264,13 @@ export default function Home() {
         {
            yesPressed && (
             <div className={styles.content}> 
-             <h1>Thank you Bana</h1>
+             <h1 style={{textAlign: "center"}}>Thank you Bana</h1>
+             <Image
+                src="/thank-you.png"
+                width={350}
+                height={300}
+                alt="flower"
+              />
             </div>
            )
         }
