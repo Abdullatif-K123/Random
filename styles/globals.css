@@ -100,6 +100,7 @@ a {
   text-decoration: none;
 }
 
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
@@ -108,3 +109,58 @@ a {
 .modal {  font-size: 12px;}
 .modal > .header 
 {  width: 100%;  border-bottom: 1px solid gray;  font-size: 18px;  text-align: center;  padding: 5px;}.modal > .content {  width: 100%;  padding: 10px 5px;}.modal > .actions {  width: 100%;  padding: 10px 5px;  margin: auto;  text-align: center;}.modal > .close {  cursor: pointer;  position: absolute;  display: block;  padding: 2px 5px;  line-height: 20px;  right: -10px;  top: -10px;  font-size: 24px;  background: #ffffff;  border-radius: 18px;  border: 1px solid #cfcece;}
+.heart-rate {
+  width: 150px;
+  height: 73px;
+  position: relative;
+  margin: 20px auto;
+}
+
+.fade-in {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: linear-gradient(45deg,pink,violet);
+  top: 0;
+  right: 0;
+  animation: heartRateIn 2.5s linear infinite;
+}
+
+.fade-out {
+  position: absolute;
+  width: 120%;
+  height: 100%;
+  top: 0;
+  left: -120%;
+  animation: heartRateOut 2.5s linear infinite;
+  background: linear-gradient(45deg,pink,violet);
+  background: -moz-linear-gradient(left, linear-gradient(45deg,pink,violet) 0%, linear-gradient(45deg,pink,violet) 50%, rgba(255, 255, 255, 0) 100%);
+  background: -webkit-linear-gradient(left, linear-gradient(45deg,pink,violet) 0%, linear-gradient(45deg,pink,violet) 50%, rgba(255, 255, 255, 0) 100%);
+  background: -o-linear-gradient(left, linear-gradient(45deg,pink,violet)0%, linear-gradient(45deg,pink,violet) 50%, rgba(255, 255, 255, 0) 100%);
+  background: -ms-linear-gradient(left,linear-gradient(45deg,pink,violet)0%, linear-gradient(45deg,pink,violet) 50%, rgba(255, 255, 255, 0) 100%);
+  background: linear-gradient(to right, linear-gradient(45deg,pink,violet) 0%, linear-gradient(45deg,pink,violet) 80%, rgba(255, 255, 255, 0) 100%);
+}
+
+@keyframes heartRateIn {
+  0% {
+    width: 100%;
+  }
+  50% {
+    width: 0;
+  }
+  100% {
+    width: 0;
+  }
+}
+
+@keyframes heartRateOut {
+  0% {
+    left: -120%;
+  }
+  30% {
+    left: -120%;
+  }
+  100% {
+    left: 0;
+  }
+}
