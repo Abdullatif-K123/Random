@@ -6,7 +6,7 @@
 
   padding: 2rem;
   min-height: 100vh;
-  background-color: rgb(255, 245, 246);
+  background: linear-gradient(45deg,pink,violet);
   color: #000;
 }
 .images{
@@ -29,7 +29,7 @@
    text-align: center;
    font-family: sans-serif;
    width: 100%;
-   color: rgb(223, 37, 99);
+   color: rgb(76, 3, 53);
 }
 .heartContent > p {
     font-family: sans-serif;
@@ -43,4 +43,24 @@
 }
 .buttonConfirm{
    background-color: pink;
+}
+.fa-heart {
+   color: rgb(60, 0, 60);
+   font-size: 25px;
+   position: absolute;
+   animation:  heartMove linear 1;
+   top: -10vh;
+   z-index: 0;
+}
+
+.fa-solid {
+ z-index: 0;
+}
+@keyframes heartMove {
+   0%{
+       transform: translateY(-10vh) ;
+   }
+   100%{
+       transform: translateY(110vh) ;
+   }
 }

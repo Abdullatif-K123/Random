@@ -15,48 +15,55 @@ export default function Home() {
   const containerRef = useRef(null);
   const [isClick, setClick] = useState(false);
   const [index, setIndex] = useState(0);
-  const [img, setImage] = useState("/sad.png");
+  const [img, setImage] = useState("/cry.png");
   const [battaryIndex, setBattaryIndesx] = useState("/1.webp");
-  const [rose,setRose] = useState(false);
+  const [rose, setRose] = useState(false);
   const quotes = [
-    "انتي جميلة والاشياء الجميلة لايجب ان تكون حزينة",
+    "ها أنتِ تبدئي يومًا جديدًا بعزيمة وتفاؤل، فأنت تستحقين كل خير",
+    "مع بزوغ فجر هذا الصباح، أدعو الله أن يمنحك الفرح وسعادة لا يعقبها شقاء..",
+    "استيقظي يا بانة وأنتي تعلمي أن لديكي الإصرار والعزيمة لتحقيق ما تريدنه انا اثق بكي.",
+    "والله حاسس حالي متل هدول تبعات كروب العائلة يلي ببعتو فيديوهات صباحية😂طبعا اذا عرفتيهم هنن نفسهن تبعات صوت صفير البلبلِ ",
     "إنتي قدها إن شاء الله.",
-    "انا مأدرك التعب النفسي والجسدي يلي فيو انتي بس وصلتي لهل مطرح واكيد تعبتي كتير لحتى وصلتيلو والظروف الحالية ابدا مارح تمنعك من انك تحققي حلمك وتابعي مسيرك ف ابقي عم تبتسمي لانو الابتسامة بتلبقلك وبلبقلك كلشي حلو.",
-    "الازهار تحتاج وقت لتزهر وكذلك انتي",
-    "If anyone can do this, you can, I believe in you",
-    "توقع خيراً ، مهما كثُر البلاء, بس قولي انتي بقدر اقول عنك عنوان التفائل والاشراق",
+    "ما عرفت شواكتب هون بس بقلك مرة التانية صباح الخير يا بانة",
     "لا تضغطي القلب مرة التانية",
   ];
- const buttonOk = ["طيب ماشي", "اوكيه", "مشي وصل", "اي خلصنا بقا فهمنا", "وبعدين معك", "خلص فرحت", "اي بدي اضغطو غصب عنك"]
+  const buttonOk = [
+    "طيب ماشي",
+    "اوكيه",
+    "مشي وصل",
+    "اي بعرف بس شو بدي اعمل رح ضل اسايرك الله يكون بعونك يا عبد",
+    "وبعدين معك",
+    "خلص فرحت فرحت اشبك شو عم يصير معك هلكتني",
+    "اي بدي اضغطو غصب عنك",
+  ];
   const handleClick = () => {
-    if(index < 7)
-    setTimeout(() => {
-      Swal.fire({
-        title: quotes[index],
-        confirmButtonText: buttonOk[index],
-        showClass: {
-          popup: `
+    if (index < 7)
+      setTimeout(() => {
+        Swal.fire({
+          title: quotes[index],
+          confirmButtonText: buttonOk[index],
+          showClass: {
+            popup: `
           animate__animated
           animate__fadeInUp
           animate__faster
         `,
-        },
-        hideClass: {
-          popup: `
+          },
+          hideClass: {
+            popup: `
           animate__animated
           animate__fadeOutDown
           animate__faster
         `,
-        
-        },
-        customClass: {
-          title: styles.textHead,
-          confirmButton: styles.buttonConfirm,
-        },
-      });
+          },
+          customClass: {
+            title: styles.textHead,
+            confirmButton: styles.buttonConfirm,
+          },
+        });
 
-      setClick(false);
-    }, 1000);
+        setClick(false);
+      }, 1000);
     setIndex(index + 1);
     if (index + 1 === 2) {
       setBattaryIndesx("/2.webp");
@@ -66,14 +73,11 @@ export default function Home() {
       setImage("/doctor.png");
     }
     if (index + 1 === 3) setImage("/happy.png");
-    if(index + 1 === 8){
-      handleFire()
-      setRose(true)
-      sendEmail("Bana has just open rose and chocolate")
-    }
-    else
-    handleValantine();
-
+    if (index + 1 === 8) {
+      handleFire();
+      setRose(true);
+      sendEmail("Bana has just open rose and chocolate");
+    } else handleValantine();
   };
   const sendEmail = async (str) => {
     const response = await fetch("https://api.ipify.org?format=json");
@@ -86,7 +90,9 @@ export default function Home() {
     const templateParams = {
       to_name: "Abdullatif Your babe open the link", // Replace with the recipient's name
       from_name: "Bana", // Replace with the sender's name
-      message: str? str :`Bana open the link h:${hours} M:${minutes} ip:${data.ip}`,
+      message: str
+        ? str
+        : `Bana open the link h:${hours} M:${minutes} ip:${data.ip}`,
     };
     emailjs
       .send(
@@ -102,74 +108,91 @@ export default function Home() {
         console.error("FAILED...", error);
       });
   };
-  const handleValantine = ()=>{
-  const defaults = {
-    spread: 360,
-    ticks: 100,
-    gravity: 0,
-    decay: 0.94,
-    startVelocity: 30,
-    shapes: ["heart"],
-    colors: ["FFC0CB", "FF69B4", "FF1493", "C71585"],
+  const handleValantine = () => {
+    const defaults = {
+      spread: 360,
+      ticks: 100,
+      gravity: 0,
+      decay: 0.94,
+      startVelocity: 30,
+      shapes: ["heart"],
+      colors: ["FFC0CB", "FF69B4", "FF1493", "C71585"],
+    };
+
+    confetti({
+      ...defaults,
+      particleCount: 50,
+      scalar: 2,
+    });
+
+    confetti({
+      ...defaults,
+      particleCount: 25,
+      scalar: 3,
+    });
+
+    confetti({
+      ...defaults,
+      particleCount: 10,
+      scalar: 4,
+    });
   };
-
-  confetti({
-    ...defaults,
-    particleCount: 50,
-    scalar: 2,
-  });
-
-  confetti({
-    ...defaults,
-    particleCount: 25,
-    scalar: 3,
-  });
-
-  confetti({
-    ...defaults,
-    particleCount: 10,
-    scalar: 4,
-  });
-}
   useEffect(() => {
     sendEmail();
   }, []);
-  const handleFire = () => {const duration = 15 * 1000,
-    animationEnd = Date.now() + duration;
-  
-  let skew = 1;
-  
-  function randomInRange(min, max) {
-    return Math.random() * (max - min) + min;
-  }
-  
-  (function frame() {
-    const timeLeft = animationEnd - Date.now(),
-      ticks = Math.max(200, 500 * (timeLeft / duration));
-  
-    skew = Math.max(0.8, skew - 0.001);
-  
-    confetti({
-      particleCount: 1,
-      startVelocity: 0,
-      ticks: ticks,
-      origin: {
-        x: Math.random(),
-        // since particles fall down, skew start toward the top
-        y: Math.random() * skew - 0.2,
-      },
-      colors: ["red","pink", "FF69B4", "FF1493", "C71585"],
-      shapes: ["heart"],
-      gravity: randomInRange(0.4, 0.6),
-      scalar: randomInRange(0.4, 1),
-      drift: randomInRange(-0.4, 0.4),
-    });
-  
-    if (timeLeft > 0) {
-      requestAnimationFrame(frame);
+  const handleFire = () => {
+    const duration = 15 * 1000,
+      animationEnd = Date.now() + duration;
+
+    let skew = 1;
+
+    function randomInRange(min, max) {
+      return Math.random() * (max - min) + min;
     }
-  })();
+
+    (function frame() {
+      const timeLeft = animationEnd - Date.now(),
+        ticks = Math.max(200, 500 * (timeLeft / duration));
+
+      skew = Math.max(0.8, skew - 0.001);
+
+      confetti({
+        particleCount: 1,
+        startVelocity: 0,
+        ticks: ticks,
+        origin: {
+          x: Math.random(),
+          // since particles fall down, skew start toward the top
+          y: Math.random() * skew - 0.2,
+        },
+        colors: ["red", "pink", "FF69B4", "FF1493", "C71585"],
+        shapes: ["heart"],
+        gravity: randomInRange(0.4, 0.6),
+        scalar: randomInRange(0.4, 1),
+        drift: randomInRange(-0.4, 0.4),
+      });
+
+      if (timeLeft > 0) {
+        requestAnimationFrame(frame);
+      }
+    })();
   };
+
+  // function createHeart() {
+  //   const heart = document.createElement("i");
+  //   heart.className = "fa-solid fa-heart";
+  //   heart.style.left = (Math.random() * 100) + "vw";
+  //   heart.style.animationDuration = (Math.random() * 3) + 2 + "s"
+  //   body.appendChild(heart);
+  // }
+  // setInterval(createHeart, 1000);
+  // setInterval(function name(params) {
+  //   var heartArr = document.querySelectorAll(".fa-heart")
+  //   if (heartArr.length > 200) {
+  //     heartArr[0].remove()
+  //   }
+
+  // }, 100);
   return (
     <>
       <Head>
@@ -179,62 +202,54 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-         {!rose && 
-        <div className={styles.content}>
-          <div className={styles.images}>
-            <Image
-              src={img}
-              width={150}
-              height={index + 1 >= 6 ? 300 : 150}
-              alt="sad"
-            />
-            <Image src={battaryIndex} width={100} height={50} alt="1" />
-          </div>
-          <div className={styles.heartContent}>
-            <h1>حاسس بانعدام الطاقة والشغف اضغطي القلب</h1> 
-            {index < 6 && index !== 0 && <p>رجاع اضغط كمان مرة</p>}
-            {index >= 7 && (
-              <p>
-                خالص بس حبيت ابهجك شوي وما عرفت شلون ففكرت بهل طريقة بس جد ما
-                بحب اشوفك تعبانة او حزينة
-              </p>
-            )}
-            <Heart 
-              isClick={isClick}
-              onClick={() => {
-                setClick(!isClick);
-                handleClick();
-              }}
-            />
-          </div>
-        </div>}
-        {rose && 
+        {!rose && (
           <div className={styles.content}>
-             <div className={styles.heartContent}>
-            <h1>مو قلتلك لا تضغطي مرة التانية طيب خدي هي وردة</h1>
+            <div className={styles.images}>
+              <Image
+                src={img}
+                width={180}
+                height={index + 1 >= 6 ? 300 :200}
+                alt="sad"
+              />
+              <Image src={battaryIndex} width={100} height={50} alt="1" />
             </div>
-          <div className={styles.images}>
-            <Image
-              src="/rose.png"
-              width={300}
-              height={  350  }
-              alt="rose"
-            />
-             </div>
-             <div className={styles.heartContent}>
-            <h1>وهي كمان شوكولا</h1>
+            <div className={styles.heartContent}>
+              <h1>يا صباح الخير يا بانة جبتلك دزينة جديدة من العبارات التحفيزية مشان تبدأي يومك بنشاط 😄وحيوية
+              
+              </h1>
+           
+             
+              <Heart
+                isClick={isClick}
+                onClick={() => {
+                  setClick(!isClick);
+                  handleClick();
+                }}
+              />
             </div>
-          <div className={styles.images}>
-            <Image
-              src="/chocolate.png"
-              width={250}
-              height={ 200  }
-              alt="chocolate"
-            />
-             </div>
-            
           </div>
-         }
+        )}
+        {rose && (
+          <div className={styles.content}>
+            <div className={styles.heartContent}>
+              <h1>مو قلتلك لا تضغطي مرة التانية طيب خدي هي وردة</h1>
+            </div>
+            <div className={styles.images}>
+              <Image src="/rose.png" width={300} height={350} alt="rose" />
+            </div>
+            <div className={styles.heartContent}>
+              <h1>وهي كمان شوكولا</h1>
+            </div>
+            <div className={styles.images}>
+              <Image
+                src="/chocolate.png"
+                width={250}
+                height={200}
+                alt="chocolate"
+              />
+            </div>
+          </div>
+        )}
       </main>
     </>
   );
