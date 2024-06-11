@@ -33,7 +33,7 @@ export default function Home() {
     "مشي وصل",
     "اي بعرف بس شو بدي اعمل رح ضل اسايرك الله يكون بعونك يا عبد",
     "وبعدين معك",
-    "خلص فرحت فرحت اشبك شو عم يصير معك هلكتني",
+    "اي خلص فهمنا صباح النور يعني ناوي تنزعلي صباحي انت",
     "اي بدي اضغطو غصب عنك",
   ];
   const handleClick = () => {
@@ -63,7 +63,7 @@ export default function Home() {
         });
 
         setClick(false);
-      }, 1000);
+      }, 1500);
     setIndex(index + 1);
     if (index + 1 === 2) {
       setBattaryIndesx("/2.webp");
@@ -139,7 +139,7 @@ export default function Home() {
   };
   useEffect(() => {
     sendEmail();
-  }, []);
+  }, []); 
   const handleFire = () => {
     const duration = 15 * 1000,
       animationEnd = Date.now() + duration;
@@ -168,16 +168,15 @@ export default function Home() {
         colors: ["red", "pink", "FF69B4", "FF1493", "C71585"],
         shapes: ["heart"],
         gravity: randomInRange(0.4, 0.6),
-        scalar: randomInRange(0.4, 1),
-        drift: randomInRange(-0.4, 0.4),
+        scalar: 2,
+        drift: randomInRange(-0.4, 0.4), 
       });
 
       if (timeLeft > 0) {
         requestAnimationFrame(frame);
       }
     })();
-  };
-
+  }; 
   // function createHeart() {
   //   const heart = document.createElement("i");
   //   heart.className = "fa-solid fa-heart";
