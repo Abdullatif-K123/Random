@@ -56,6 +56,26 @@
 .fa-solid {
  z-index: 0;
 }
+.buttonsClicked{
+   margin-top: 20px;
+    display: flex ;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+}
+.yesButton{
+    background-color: rgb(245, 77, 105);
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 10px;
+}
+.noButton{
+    background-color: red;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 10px;
+}
 @keyframes heartMove {
    0%{
        transform: translateY(-10vh) ;

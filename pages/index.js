@@ -18,6 +18,13 @@ export default function Home() {
   const [img, setImage] = useState("/cry.png");
   const [battaryIndex, setBattaryIndesx] = useState("/1.webp");
   const [rose, setRose] = useState(false);
+  const [noCount, setNoCount] = useState(0);
+  const [yesPressed, setYesPressed] = useState(false);
+  const yesButtonSize = noCount * 20 + 16;
+
+  const handleNoClick = () => {
+    setNoCount(noCount + 1);
+  };
   const quotes = [
     "ها أنتِ تبدئي يومًا جديدًا بعزيمة وتفاؤل، فأنت تستحقين كل خير",
     "مع بزوغ فجر هذا الصباح، أدعو الله أن يمنحك الفرح وسعادة لا يعقبها شقاء..",
@@ -27,6 +34,22 @@ export default function Home() {
     "ما عرفت شواكتب هون بس بقلك مرة التانية صباح الخير يا بانة",
     "لا تضغطي القلب مرة التانية",
   ];
+  const getNoButtonText = () => {
+  const phrases = [
+     "لا ما اثر فيني طاول",
+     "حزن بالله شو", 
+     "طيب انتي متأكدة", 
+     "الله يوفقك بس ابتسمي",
+     "كرمالي", 
+     "طيب وهلأ", 
+     "طيب وهلأ", 
+     "طيب وهلأ", 
+     ":(  طيب وهلأ", 
+          
+  ]
+  
+  return phrases[Math.min(noCount, phrases.length - 1)];
+};
   const buttonOk = [
     "طيب ماشي",
     "اوكيه",
@@ -70,7 +93,7 @@ export default function Home() {
     }
     if (index + 1 === 5) {
       setBattaryIndesx("/3.webp");
-      setImage("/doctor.png");
+      setImage("/cute-girl.png");
     }
     if (index + 1 === 3) setImage("/happy.png");
     if (index + 1 === 8) {
@@ -207,7 +230,7 @@ export default function Home() {
               <Image
                 src={img}
                 width={180}
-                height={index + 1 >= 6 ? 300 :200}
+                height={200}
                 alt="sad"
               />
               <Image src={battaryIndex} width={100} height={50} alt="1" />
@@ -228,27 +251,38 @@ export default function Home() {
             </div>
           </div>
         )}
-        {rose && (
+        {(rose && !yesPressed) &&  (
           <div className={styles.content}>
             <div className={styles.heartContent}>
-              <h1>مو قلتلك لا تضغطي مرة التانية طيب خدي هي وردة</h1>
+              <h1>هلأ بالله فرحتي ولا لأ</h1>
             </div>
             <div className={styles.images}>
-              <Image src="/rose.png" width={300} height={350} alt="rose" />
+              <Image src="/rose.png" width={150} height={150} alt="rose" />
             </div>
-            <div className={styles.heartContent}>
-              <h1>وهي كمان شوكولا</h1>
-            </div>
-            <div className={styles.images}>
-              <Image
-                src="/chocolate.png"
-                width={250}
-                height={200}
-                alt="chocolate"
-              />
-            </div>
+            <div className={styles.buttonsClicked}>
+            <button
+              className={styles.yesButton}
+              style={{ fontSize: yesButtonSize }}
+              onClick={() => setYesPressed(true)}
+            >
+              أي فرحت
+            </button>
+            <button
+              onClick={handleNoClick}
+              className={styles.noButton}
+            >
+              {noCount === 0 ? "لا" : getNoButtonText()}
+            </button>
+          </div>
           </div>
         )}
+        {
+           yesPressed && (
+            <div className={styles.content}> 
+             <h1>Thank you Bana</h1>
+            </div>
+           )
+        }
       </main>
     </>
   );
