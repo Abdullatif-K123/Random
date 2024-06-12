@@ -108,7 +108,7 @@ const buttonCon = [
              if (index + 1 === 7) {
         handleFire();
         setRose(true);
-        // sendEmail("Bana has just open rose and chocolate");
+        sendEmail("Bana has just open the last page");
       }
         })
 
@@ -175,7 +175,7 @@ const buttonCon = [
     });
   };
   useEffect(() => {
-    // sendEmail();
+    sendEmail();
   }, []); 
   const handleFire = () => {
     const duration = 15 * 1000,
