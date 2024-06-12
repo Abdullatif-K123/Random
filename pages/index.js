@@ -39,8 +39,8 @@ export default function Home() {
   const phrases = [
      "لا ما اثر فيني طاول",
      "حزن بالله شو", 
-     "طيب انتي متأكدة", 
-     "كرمالي", 
+     "بتعرفي انو ابتسامتك كتير حلوة", 
+     "بتعرفي انك والله حلوة كتير", 
      "حدا خبرك قبل انك كتير حلوة",
      "طيب وهلأ", 
      "طيب وهلأ", 
@@ -254,7 +254,7 @@ const buttonCon = [
         {(rose && !yesPressed) &&  (
           <div className={styles.content}>
             <div className={styles.heartContent}>
-              <h1>هلأ بالله فرحتي ولا لأ</h1>
+              <h1>بتمنى كون غيرتلك مودك بس جد يلي قلتو هي حقيقة علمية مثبتة</h1>
             </div>
             <div className={styles.images}>
               <Image src="/rose.png" width={150} height={150} alt="rose" />
@@ -280,8 +280,9 @@ const buttonCon = [
            yesPressed && (
             <div className={styles.content} style={{display: "flex", alignItems:"center", flexDirection: "column"}}> 
              <h1 style={{textAlign: "center"}}>Thank you Bana</h1>
-             <h1 style={{textAlign: "center"}}>وانا كمان فرحت</h1>
-             <h1 style={{textAlign: "center"}}>بتمنالك كل الخير يا بانة والله يعطيكي كلشي بتتمنيه واكتر</h1>
+             <h1 style={{textAlign: "center"}}>رح خبرك بسر</h1>
+             <h1 style={{textAlign: "center"}}>بشوف فيكي اشيا مختلفة عن باقي الناس ما بعرف شو هو بس مجملك كتير وبحس هل شي هو قريب مني وبشبهني <br/>الله يسرلي ويجعلك إلي ويجعلني الشخص يلي بكون سندك وسبب سعادتك ويراضيكي ويتفنن بمراضاتك وابني عيلة معك</h1>
+              <h1 style={{textAlign:"center"}}>يا دكتورتي </h1>
              <Image
                 src="/thank-you.png"
                 width={350}
