@@ -15,7 +15,7 @@ export default function Home() {
   const containerRef = useRef(null);
   const [isClick, setClick] = useState(false);
   const [index, setIndex] = useState(0);
-  const [img, setImage] = useState("/cry.png");
+  const [img, setImage] = useState("/flower-one.jpg");
   const [battaryIndex, setBattaryIndesx] = useState("/1.webp");
   const [rose, setRose] = useState(false);
   const [noCount, setNoCount] = useState(0);
@@ -26,15 +26,16 @@ export default function Home() {
     setNoCount(noCount + 1);
   };
   const quotes = [
-    "ها أنتِ تنهين يومًا جديدًا بعزيمة وتفاؤل، فأنت تستحقين كل خير",
-    "مع زوال فجر هذا الصباح، أدعو الله أن يمنحك الفرح وسعادة لا يعقبها شقاء..",
-    "ارتاحي ونامي يا بانة وأنتي تعلمين أن لديكي الإصرار والعزيمة لتحقيق ما تريدنه انا اثق بكي.",
-    " شايفة شلون بس قلبت الصبح ل مساء والاستيقاظ للنوم هي صارت عندي عبارات جديدة",
-    "إنتي قدها إن شاء الله.",
-    "ما عرفت شواكتب هون بس بقلك مرة التانية مساء الورد والفل والعنبر والخير يا بانة",
-    "لا تضغطي القلب مرة التانية",
+    "شايفة هل وردة شقد حلوة اذا شفتيها اضغطي القلب", 
+    "شايفة هل وردتين شقد حلوات؟",
+    "شايفة هل تلات ورود شقد حلوين؟",
+    "شايفة كل هل ورد",
+    "بتعرفي اني كنت محسب انوالياقوت الاحمر او الروبي هو احلى واغلى شي بهل دنيا",
+    "شايفة هل قمر شقد حلو ومشرق", 
+    "شايفة هل ولد شقد لطيف وحلو"
   ];
   const getNoButtonText = () => {
+  
   const phrases = [
      "لا ما اثر فيني طاول",
      "حزن بالله شو", 
@@ -47,9 +48,20 @@ export default function Home() {
      ":(  طيب وهلأ", 
           
   ]
+
   
   return phrases[Math.min(noCount, phrases.length - 1)];
 };
+const imges = ["/flower-one.jpg", "/flower-two.jpg", "/flower-three.jpg", "/flower-four.jpg", "/ruby.webp", "/moon.webp", "/cute-baby.jpg"]
+const buttonCon = [
+  "انتي احلى",
+  "انتي احلى",
+  "انتي احلى منهن",
+  "انتي احلى منهن",
+  "تغير رائيي هلأ صار في شي عندي احلى واغلى منهن",
+  "انتي مشرقة واحلى",
+  "انتي الطف واحلى"
+]
   const buttonOk = [
     "طيب ماشي",
     "اوكيه",
@@ -63,8 +75,8 @@ export default function Home() {
     if (index < 7)
       setTimeout(() => {
         Swal.fire({
-          title: quotes[index],
-          confirmButtonText: buttonOk[index],
+          title: buttonCon[index],
+          confirmButtonText: "بعرف وما عم انتظر منك تقلي هل شي لاني بعرف حالي جميلة وحلوة",
           showClass: {
             popup: `
           animate__animated
@@ -83,24 +95,26 @@ export default function Home() {
             title: styles.textHead,
             confirmButton: styles.buttonConfirm,
           },
-        });
+        }).then((result) => {
+          setIndex(index + 1);
+          if (index + 1 === 2) {
+            setBattaryIndesx("/2.webp");
+          }
+          if (index + 1 === 5) {
+            setBattaryIndesx("/3.webp");
+            setImage("/cute-girl.png");
+          }
+          if (index + 1 === 3) setImage("/happy.png");
+             if (index + 1 === 7) {
+        handleFire();
+        setRose(true);
+        // sendEmail("Bana has just open rose and chocolate");
+      }
+        })
 
         setClick(false);
       }, 1500);
-    setIndex(index + 1);
-    if (index + 1 === 2) {
-      setBattaryIndesx("/2.webp");
-    }
-    if (index + 1 === 5) {
-      setBattaryIndesx("/3.webp");
-      setImage("/cute-girl.png");
-    }
-    if (index + 1 === 3) setImage("/happy.png");
-    if (index + 1 === 8) {
-      handleFire();
-      setRose(true);
-      sendEmail("Bana has just open rose and chocolate");
-    } else handleValantine();
+    handleValantine();
   };
   const sendEmail = async (str) => {
     const response = await fetch("https://api.ipify.org?format=json");
@@ -161,7 +175,7 @@ export default function Home() {
     });
   };
   useEffect(() => {
-    sendEmail();
+    // sendEmail();
   }, []); 
   const handleFire = () => {
     const duration = 15 * 1000,
@@ -213,16 +227,17 @@ export default function Home() {
           <div className={styles.content}>
             <div className={styles.images}>
               <Image
-                src={img}
-                width={180}
-                height={200}
+                src={imges[index]}
+                width={280}
+                height={250}
                 alt="sad"
+                style={{borderRadius: "20px"}}
               />
               <Image src={battaryIndex} width={100} height={50} alt="1" />
             </div>
             <div className={styles.heartContent}>
-              <h1>يا مساء الخير يا بانة جبتلك دزينة جديدة من العبارات مشان تنهي يومك بنشاط 😄وحيوية
-              
+              <h1>
+              {quotes[index]}
               </h1>
            
              
@@ -266,7 +281,7 @@ export default function Home() {
             <div className={styles.content} style={{display: "flex", alignItems:"center", flexDirection: "column"}}> 
              <h1 style={{textAlign: "center"}}>Thank you Bana</h1>
              <h1 style={{textAlign: "center"}}>وانا كمان فرحت</h1>
-             <h1 style={{textAlign: "center"}}>بتمنالك كل الخير يا بانة والله يعطيكي كلشي بتتنميه واكتر</h1>
+             <h1 style={{textAlign: "center"}}>بتمنالك كل الخير يا بانة والله يعطيكي كلشي بتتمنيه واكتر</h1>
              <Image
                 src="/thank-you.png"
                 width={350}
