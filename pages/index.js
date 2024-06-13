@@ -182,7 +182,7 @@ export default function Home() {
   };
 
   useEffect(() => {
-    // sendEmail();
+    sendEmail();
     const defaults = {
       spread: 360,
       ticks: 50,
