@@ -224,7 +224,7 @@ const buttonCon = [
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-      <div className={styles.content}>
+      {/* <div className={styles.content}>
             <div className={styles.images} >
               <Image
                 src="/comming_soon.png"
@@ -241,7 +241,7 @@ const buttonCon = [
               </h1>
               <p  >Thank you for your patience</p>
               </div>
-              </div>
+              </div> */}
         {/* {!rose && (
           <div className={styles.content}>
             <div className={styles.images}>
