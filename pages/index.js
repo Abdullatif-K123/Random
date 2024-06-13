@@ -5,8 +5,9 @@ import styles from "@/styles/Home.module.css";
 import Heart from "react-animated-heart";
 import { useEffect, useRef, useState } from "react";
 import Swal from "sweetalert2";
-import emailjs, { send } from "@emailjs/browser"; 
+import emailjs, { send } from "@emailjs/browser";
 import { tsParticles } from "tsparticles";
+import Typewriter from "typewriter-effect";
 import { loadConfetti, confetti } from "tsparticles-confetti";
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,42 +26,47 @@ export default function Home() {
     setNoCount(noCount + 1);
   };
   const quotes = [
-    "شايفة هل وردة شقد حلوة اذا شفتيها اضغطي القلب", 
+    "شايفة هل وردة شقد حلوة اذا شفتيها اضغطي القلب",
     "شايفة هل وردتين شقد حلوات؟",
     "شايفة هل تلات ورود شقد حلوين؟",
     "شايفة كل هل ورد",
     "بتعرفي اني كنت محسب انوالياقوت الاحمر او الروبي هو احلى واغلى شي بهل دنيا",
-    "شايفة هل قمر شقد حلو ومشرق", 
-    "شايفة هل ولد شقد لطيف وحلو"
+    "شايفة هل قمر شقد حلو ومشرق",
+    "شايفة هل ولد شقد لطيف وحلو",
   ];
   const getNoButtonText = () => {
-  
-  const phrases = [
-     "لا ما اثر فيني طاول",
-     "حزن بالله شو", 
-     "بتعرفي انو ابتسامتك كتير حلوة", 
-     "بتعرفي انك والله حلوة كتير", 
-     "حدا خبرك قبل انك كتير حلوة",
-     "طيب وهلأ", 
-     "طيب وهلأ", 
-     "طيب وهلأ", 
-     ":(  طيب وهلأ", 
-          
-  ]
+    const phrases = [
+      "لا ما اثر فيني طاول",
+      "حزن بالله شو",
+      "بتعرفي انو ابتسامتك كتير حلوة",
+      "بتعرفي انك والله حلوة كتير",
+      "حدا خبرك قبل انك كتير حلوة",
+      "طيب وهلأ",
+      "طيب وهلأ",
+      "طيب وهلأ",
+      ":(  طيب وهلأ",
+    ];
 
-  
-  return phrases[Math.min(noCount, phrases.length - 1)];
-};
-const imges = ["/flower-one.jpg", "/flower-two.jpg", "/flower-three.jpg", "/flower-four.jpg", "/ruby.webp", "/moon.webp", "/cute-baby.jpg"]
-const buttonCon = [
-  "انتي احلى",
-  "انتي احلى",
-  "انتي احلى منهن",
-  "انتي احلى منهن",
-  "تغير رائيي هلأ صار في شي عندي احلى واغلى منهن",
-  "انتي مشرقة واحلى",
-  "انتي الطف واحلى"
-]
+    return phrases[Math.min(noCount, phrases.length - 1)];
+  };
+  const imges = [
+    "/flower-one.jpg",
+    "/flower-two.jpg",
+    "/flower-three.jpg",
+    "/flower-four.jpg",
+    "/ruby.webp",
+    "/moon.webp",
+    "/cute-baby.jpg",
+  ];
+  const buttonCon = [
+    "انتي احلى",
+    "انتي احلى",
+    "انتي احلى منهن",
+    "انتي احلى منهن",
+    "تغير رائيي هلأ صار في شي عندي احلى واغلى منهن",
+    "انتي مشرقة واحلى",
+    "انتي الطف واحلى",
+  ];
   const buttonOk = [
     "طيب ماشي",
     "اوكيه",
@@ -75,7 +81,8 @@ const buttonCon = [
       setTimeout(() => {
         Swal.fire({
           title: buttonCon[index],
-          confirmButtonText: "بعرف وما عم انتظر منك تقلي هل شي لاني بعرف حالي جميلة وحلوة",
+          confirmButtonText:
+            "بعرف وما عم انتظر منك تقلي هل شي لاني بعرف حالي جميلة وحلوة",
           showClass: {
             popup: `
           animate__animated
@@ -104,12 +111,12 @@ const buttonCon = [
             setImage("/cute-girl.png");
           }
           if (index + 1 === 3) setImage("/happy.png");
-             if (index + 1 === 7) {
-        handleFire();
-        setRose(true);
-        sendEmail("Bana has just open the last page");
-      }
-        })
+          if (index + 1 === 7) {
+            handleFire();
+            setRose(true);
+            sendEmail("Bana has just open the last page");
+          }
+        });
 
         setClick(false);
       }, 1500);
@@ -173,11 +180,43 @@ const buttonCon = [
       scalar: 4,
     });
   };
- 
+
   useEffect(() => {
-    sendEmail();
-     
-  }, []);  
+    // sendEmail();
+    const defaults = {
+      spread: 360,
+      ticks: 50,
+      particleCount: 2,
+      angle: 60,
+      spread: 55,
+      origin: { x: 0 },
+      gravity: 0,
+      decay: 0.94,
+      startVelocity: 30,
+      shapes: ["star"],
+      colors: ["FFE400", "FFBD00", "E89400", "FFCA6C", "FDFFB8"],
+    };
+    
+    function shoot() {
+      confetti({
+        ...defaults,
+        particleCount: 40,
+        scalar: 1.2,
+        shapes: ["star"],
+      });
+    
+      confetti({
+        ...defaults,
+        particleCount: 10,
+        scalar: 1.5,
+        shapes: ["star"],
+      });
+    }
+    
+    setTimeout(shoot, 0);
+    setTimeout(shoot, 100);
+    setTimeout(shoot, 200);
+  }, []);
   const handleFire = () => {
     const duration = 15 * 1000,
       animationEnd = Date.now() + duration;
@@ -207,14 +246,14 @@ const buttonCon = [
         shapes: ["heart"],
         gravity: randomInRange(0.4, 0.6),
         scalar: 2,
-        drift: randomInRange(-0.4, 0.4), 
+        drift: randomInRange(-0.4, 0.4),
       });
 
       if (timeLeft > 0) {
         requestAnimationFrame(frame);
       }
     })();
-  };  
+  };
   return (
     <>
       <Head>
@@ -224,24 +263,38 @@ const buttonCon = [
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-      {/* <div className={styles.content}>
-            <div className={styles.images} >
-              <Image
-                src="/comming_soon.png"
-                width={360}
-                height={360}
-                alt="sad"
-                style={{borderRadius: "20px"}}
-              />
-               
-            </div>
-            <div className={styles.heartContent} style={{marginTop: "-30px"}}>
-              <h1 >
-              The next version will be release soon...
-              </h1>
-              <p  >Thank you for your patience</p>
-              </div>
-              </div> */}
+        <div className={styles.content}>
+          <div className={styles.images}>
+            <Image
+              src="/girl_sleeping.png"
+              width={360}
+              height={360}
+              alt="sad"
+              style={{ borderRadius: "20px" }}
+            />
+          </div>
+          <div className={styles.heartContent}   >
+            <p> شو خطرلك تفتحي الرابط بهل وقت مشان اقلك تصبحي على خير؟</p>
+            <h1>طيب تكرمي</h1>
+            <h1 style={{color: "#91EAE4"}}>
+            <Typewriter
+              options={{
+                strings: [
+                  "تصبحي على خير يا دكتورتي",
+                  "نوم الهنا ان شاء الله",
+                  "أحلام سعيدة بعيدا عن المناوبات يا دكتورتي",
+                  "تصبحي على خير وسعادة ورضى",
+                  "نامي يا بانة ورتاحي كان يومك شاق ومتعب بس عندك الارادة حتى تحققي حلمك وتكملي يادكتورتي",
+                  "بانة وهيه بأقصى درجات التعب والارهاق كانت حلوة ف يا بانة لبقى تشكي بجمالك وحلاوتك انتي حلوة بكل اشكالك يا بانة",
+                  "الله يجعلك من نصيبي ويكتبك إلي ويرزقني حتى اي شي اشتيهلك ياه اقدر اهديكي ياه وعسى يكون هل امر قريب انا برجو من الله هل شي"
+                ],
+                autoStart: true,
+                loop: true,
+              }}
+            />
+            </h1>
+          </div>
+        </div>
         {/* {!rose && (
           <div className={styles.content}>
             <div className={styles.images}>
