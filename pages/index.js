@@ -183,39 +183,7 @@ export default function Home() {
 
   useEffect(() => {
     sendEmail();
-    const defaults = {
-      spread: 360,
-      ticks: 50,
-      particleCount: 2,
-      angle: 60,
-      spread: 55,
-      origin: { x: 0 },
-      gravity: 0,
-      decay: 0.94,
-      startVelocity: 30,
-      shapes: ["star"],
-      colors: ["FFE400", "FFBD00", "E89400", "FFCA6C", "FDFFB8"],
-    };
-    
-    function shoot() {
-      confetti({
-        ...defaults,
-        particleCount: 40,
-        scalar: 1.2,
-        shapes: ["star"],
-      });
-    
-      confetti({
-        ...defaults,
-        particleCount: 10,
-        scalar: 1.5,
-        shapes: ["star"],
-      });
-    }
-    
-    setTimeout(shoot, 0);
-    setTimeout(shoot, 100);
-    setTimeout(shoot, 200);
+   handleFire()
   }, []);
   const handleFire = () => {
     const duration = 15 * 1000,
@@ -242,10 +210,10 @@ export default function Home() {
           // since particles fall down, skew start toward the top
           y: Math.random() * skew - 0.2,
         },
-        colors: ["red", "pink", "FF69B4", "FF1493", "C71585"],
-        shapes: ["heart"],
+        colors: ["FFE400", "FFBD00", "E89400", "FFCA6C", "FDFFB8"],
+        shapes: ["star"],
         gravity: randomInRange(0.4, 0.6),
-        scalar: 2,
+        scalar: 1.2,
         drift: randomInRange(-0.4, 0.4),
       });
 
@@ -285,7 +253,7 @@ export default function Home() {
                   "أحلام سعيدة بعيدا عن المناوبات يا دكتورتي",
                   "تصبحي على خير وسعادة ورضى",
                   "نامي يا بانة ورتاحي كان يومك شاق ومتعب بس عندك الارادة حتى تحققي حلمك وتكملي يادكتورتي",
-                  "بانة وهيه بأقصى درجات التعب والارهاق كانت حلوة ف يا بانة لبقى تشكي بجمالك وحلاوتك انتي حلوة بكل اشكالك يا بانة",
+                  "بانة وهيه بأقصى درجات التعب والارهاق كانت حلوة ف يا بانة لبقى تشكي بذكائك و بجمالك وحلاوتك انتي حلوة بكل اشكالك يا بانة",
                   "الله يجعلك من نصيبي ويكتبك إلي ويرزقني حتى اي شي اشتيهلك ياه اقدر اهديكي ياه وعسى يكون هل امر قريب انا برجو من الله هل شي"
                 ],
                 autoStart: true,
