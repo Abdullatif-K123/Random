@@ -5,9 +5,7 @@ import styles from "@/styles/Home.module.css";
 import Heart from "react-animated-heart";
 import { useEffect, useRef, useState } from "react";
 import Swal from "sweetalert2";
-import emailjs, { send } from "@emailjs/browser";
-import AOS from 'aos';
-import 'aos/dist/aos.css'; // Import AOS CSS
+import emailjs, { send } from "@emailjs/browser"; 
 import { tsParticles } from "tsparticles";
 import { loadConfetti, confetti } from "tsparticles-confetti";
 const inter = Inter({ subsets: ["latin"] });
@@ -175,46 +173,11 @@ const buttonCon = [
       scalar: 4,
     });
   };
-  const twoSides = ()=>{
-    const end = Date.now() + 15 * 1000; 
-    
-    // go Buckeyes!
-    const colors =["red", "pink", "FF69B4", "FF1493", "C71585"];
-    
-    (function frame() {
-      confetti({
-        particleCount: 2,
-        shapes: ["heart"],
-        angle: 60,
-        spread: 55,
-        origin: { x: 0 },
-        
-        scalar: 2, 
-        colors: colors,
-      });
-    
-      confetti({
-        particleCount: 2,
-        shapes: ["heart"],
-        angle: 120,
-        spread: 55,
-        
-        scalar: 2, 
-        origin: { x: 1 },
-        colors: colors,
-      });
-    
-      if (Date.now() < end) {
-        requestAnimationFrame(frame);
-      }
-    })();
-  }
+ 
   useEffect(() => {
     sendEmail();
-    
-    AOS.init(); // Initialize AOS
-  }, []); 
-  twoSides();
+     
+  }, []);  
   const handleFire = () => {
     const duration = 15 * 1000,
       animationEnd = Date.now() + duration;
@@ -262,7 +225,7 @@ const buttonCon = [
       </Head>
       <main className={styles.main}>
       <div className={styles.content}>
-            <div className={styles.images} data-aos="fade-down">
+            <div className={styles.images} >
               <Image
                 src="/comming_soon.png"
                 width={360}
@@ -273,10 +236,10 @@ const buttonCon = [
                
             </div>
             <div className={styles.heartContent} style={{marginTop: "-30px"}}>
-              <h1 data-aos="fade-right">
+              <h1 >
               The next version will be release soon...
               </h1>
-              <p data-aos="fade-left">Thank you for your patience</p>
+              <p  >Thank you for your patience</p>
               </div>
               </div>
         {/* {!rose && (
