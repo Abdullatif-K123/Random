@@ -234,7 +234,7 @@ export default function Home() {
         <div className={styles.content}>
           <div className={styles.images}>
             <Image
-              src="/girl_sleeping.png"
+              src="/girl_wake.png"
               width={360}
               height={360}
               alt="sad"
@@ -258,7 +258,8 @@ export default function Home() {
                     "شوفيلي هل عبارات شغل غروبات العيلة",
                     "صبحك الله بالخير، كل ما غرّد الطير،",
                     "صباح الخير ونسماته، يا قمر الليل ونجماته",
-                                   ],
+                    "بس جد مرة التانية بقلك صباح الخير والله يقسملك كل الخير يا بانة يا دكتورتي"               
+                  ],
                   autoStart: true,
                   loop: true,
                   deleteSpeed: 10
