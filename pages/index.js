@@ -121,6 +121,39 @@ export default function Home() {
      setIndex(index + 1)
     handleValantine();
   };
+  const handleFireWare = ()=>{
+    const duration = 55 * 1000,
+    animationEnd = Date.now() + duration,
+    defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+  
+  function randomInRange(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+  
+  const interval = setInterval(function() {
+    const timeLeft = animationEnd - Date.now();
+  
+    if (timeLeft <= 0) {
+      return clearInterval(interval);
+    }
+  
+    const particleCount = 50 * (timeLeft / duration);
+  
+    // since particles fall down, start a bit higher than random
+    confetti(
+      Object.assign({}, defaults, {
+        particleCount,
+        origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
+      })
+    );
+    confetti(
+      Object.assign({}, defaults, {
+        particleCount,
+        origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
+      })
+    );
+  }, 250);
+  }
   const sendEmail = async (str) => {
     const response = await fetch("https://api.ipify.org?format=json");
     const data = await response.json();
@@ -182,7 +215,7 @@ export default function Home() {
 
   useEffect(() => {
     sendEmail();
-    // handleFire();
+    handleFireWare()
   }, []);
   const handleFire = () => {
     const duration = 15 * 1000,
@@ -226,9 +259,7 @@ export default function Home() {
        setChoosing(false); 
        sendEmail(str);
   }
-  useEffect(()=>{
-     index > 5 ? handleFire(): null
-  },[index])
+ 
   return (
     <>
       <Head>
@@ -238,30 +269,31 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-    { index  > 5 && <div className={styles.content}>
+    <div className={styles.content}>
       <div className={styles.images}>
         <Image
-          src="/girl_sleeping.png"
-          width={360}
-          height={360}
+          src="/cute-girl-sheep.png"
+          width={350}
+          height={350}
           alt="sad"
           style={{ borderRadius: "20px" }}
         />
+       
       </div>
       <div className={styles.heartContent}>
-
+       <h1>طبعا منعرف وين بانة اخدة الخروف المسكين الفرحان </h1>
       
         <h1 style={{ color: "#fff" }}>
           <Typewriter
             options={{
               strings: [
-                "تصبحي على خير يا بانة واحلام سعيدة",
-                "يردونك تزعلي وانتي دكتورة لك هيبتك ونجاحك ف تبا لمن يريد لك السوء",
-                "نامي واستريحي يا بانة ف حتى الزهور يجب ان ترتاح والله ما بعرف شو بدي اكتب المهم وصلت الفكرة مو هيك؟ ",
-                "صبحك الله بالخير، كل ما غرّد الطير،", 
-                "لا تنسي بانة بكرا يوم عرفة كتري دعاء ادعي كتير  لانو جد انا معلق املي بالله ومالي مستسلم بس بالاخير يلي اخترلنا ياه الله رح يصير وانا اسف اذا عم ازعجك بهل شي بس والله عم اترك لو خيط من الامل",
-                "مرة التانية تصبحي على خير يا بانة يا دكتورتي والله يجعلك من نصيبي ويرزقني ويفتح علاي وعليكي واكمل طريقي معكي وافرح بنجاحك واشاركك إنجازاتي"            
-              ],
+                "صباح الخير يا بانة كل عام وانتي بألف خير",
+                "عيد اضحى مبارك عليكي وعلى عائلتك جميعا",
+                "كل عام وأنت طيب ونفسك هادئة وحقق الله مرادك.",
+                "لا تنسينا من الدعاء عسى الله ان يفرج عنا ما نحن فيه ",
+                " الله يجمعنا فيما يرضاه وسنة الجاي او البعدها ولو مستحيلة نوعا ما بس نكون عم نحج مع بعض", 
+                "كل عام وانتي بألف خير يا دكتورة بانة",
+                            ],
               autoStart: true,
               loop: true,
               deleteSpeed: 10
@@ -269,8 +301,8 @@ export default function Home() {
           />
         </h1>
       </div>
-    </div>  }
-    { index <=5 &&   <div className={styles.content}>
+    </div>  
+    {/* { index <=5 &&   <div className={styles.content}>
        { index <= 5 && <div className={styles.images}>
               <Image
                 src={imges[index - 1]}
@@ -297,7 +329,7 @@ export default function Home() {
                 }}
               />
             </div>
-        </div>}
+        </div>} */}
         {/* {!rose && (
           <div className={styles.content}>
             <div className={styles.images}>
