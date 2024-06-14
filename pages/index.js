@@ -181,7 +181,7 @@ export default function Home() {
   };
 
   useEffect(() => {
-    // sendEmail();
+    sendEmail();
     // handleFire();
   }, []);
   const handleFire = () => {
