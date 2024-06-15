@@ -122,7 +122,7 @@ export default function Home() {
     handleValantine();
   };
   const handleFireWare = ()=>{
-    const duration = 55 * 1000,
+    const duration = 50 * 1000,
     animationEnd = Date.now() + duration,
     defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
   
@@ -137,7 +137,7 @@ export default function Home() {
       return clearInterval(interval);
     }
   
-    const particleCount = 50 * (timeLeft / duration);
+    const particleCount = 10 * (timeLeft / duration);
   
     // since particles fall down, start a bit higher than random
     confetti(
@@ -280,19 +280,18 @@ export default function Home() {
         />
        
       </div>
-      <div className={styles.heartContent}>
-       <h1>طبعا منعرف وين بانة اخدة الخروف المسكين الفرحان </h1>
+      <div className={styles.heartContent}> 
       
         <h1 style={{ color: "#fff" }}>
           <Typewriter
             options={{
               strings: [
-                "صباح الخير يا بانة كل عام وانتي بألف خير",
+                "كل عام وانتي بألف خير يا بانة الله يجعله عيد خير وبركة عليكي",
+                "الله يجعله عيد خير عليكي والله يحققلك كل امانيكي وينور دربك ويحقق مرادك ويرفع قدرك ومقامك وييسر امرك ويسر قلبك ويطيب خاطرك بكلشي بتتمنيه ",
                 "عيد اضحى مبارك عليكي وعلى عائلتك جميعا",
                 "كل عام وأنتي طيبة ونفسكي هادئة وحقق الله مرادك.",
-                "لا تنسينا من الدعاء عسى الله ان يفرج عنا ما نحن فيه ",
-                " الله يجمعنا فيما يرضاه وسنة الجاي او البعدها ولو مستحيلة نوعا ما بس نكون عم نحج مع بعض", 
-                "كل عام وانتي بألف خير يا دكتورة بانة",
+                "  الله يجمعنا فيما يرضاه وسنة الجاي او البعدها ولو مستحيلة بس الله كريم انو نكون عم نحج مع بعض ونوقف على جبل عرفات مع بعض", 
+                "كل عام وانتي بألف خير يا دكتورة وانا بعتذر منك بأي شي انا اذيتك فيه او كسرت خاطرك فيه ",
                             ],
               autoStart: true,
               loop: true,
