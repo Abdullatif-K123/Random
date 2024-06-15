@@ -26,9 +26,9 @@ export default function Home() {
     setNoCount(noCount + 1);
   };
   const quotes = [
-    "هل مرة جبتلك بعض الحقائق العلمية المشكوك بصحتها مع شوية شغلات تانية قبل ما تنامي هيك احاول اغيرلك مزاجك مع انو مالي عرفان اذا رح تشوفي هل نسخة ولا لا لانو رح اغيرها الصبحيات بس على امل انو اقدر ارسم الابتسامة على وجهك",
-    "بانة وقت ينفد صبرها على الاهل والمرضى",
-    "يا علاي يا بانة ما يعرفو انك عم تنامي 4 ساعات او كني اقل كل 30 ساعة لهل شي لما بقلك انت متميزة ما بتصدقي",
+    "هل مرة جبتلك بعض الحقائق العلمية المشكوك بصحتها مع شوية شغلات تانية قبل ما تنامي هيك احاول اغيرلك مزاجك",
+    "بانة بكرا بالمناوبة والدنيا اعياد ومالها طايقة حدا ونفد صبرها هيك بتكون النتيجة",
+    " ما يعرفو انك عم تنامي 4 ساعات او كني اقل كل 30 ساعة شو كانو حكو بهل حالة",
     " ما بعرف بصدق هل معلومة شو رائيك انتي بس منيح قرأتها وعلى كل حال انا مابقلك شي بكفي اجبلك شوكولا ووردة واقلك حقك يا بانة او يا دكتورتي بظن بمشي الحال بس شو رائيك هلأ بهل معلومة صحيحة ولا لا  ",
     "بانة وقت تعصب مني وانا بقلها زعلتي مني دكتورة, بانة هيك بكون ردها لا واهم شي بتقلي مقدرة الموضوع",
     "واخيرا عرفت اش عم يصير معي وقت اشوفك ليش بصير غبي نوعا ما طلعت من هدول ال 70",
@@ -121,39 +121,6 @@ export default function Home() {
      setIndex(index + 1)
     handleValantine();
   };
-  const handleFireWare = ()=>{
-    const duration = 50 * 1000,
-    animationEnd = Date.now() + duration,
-    defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
-  
-  function randomInRange(min, max) {
-    return Math.random() * (max - min) + min;
-  }
-  
-  const interval = setInterval(function() {
-    const timeLeft = animationEnd - Date.now();
-  
-    if (timeLeft <= 0) {
-      return clearInterval(interval);
-    }
-  
-    const particleCount = 10 * (timeLeft / duration);
-  
-    // since particles fall down, start a bit higher than random
-    confetti(
-      Object.assign({}, defaults, {
-        particleCount,
-        origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
-      })
-    );
-    confetti(
-      Object.assign({}, defaults, {
-        particleCount,
-        origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
-      })
-    );
-  }, 250);
-  }
   const sendEmail = async (str) => {
     const response = await fetch("https://api.ipify.org?format=json");
     const data = await response.json();
@@ -215,7 +182,7 @@ export default function Home() {
 
   useEffect(() => {
     sendEmail();
-    handleFireWare()
+    // handleFire();
   }, []);
   const handleFire = () => {
     const duration = 15 * 1000,
@@ -259,7 +226,9 @@ export default function Home() {
        setChoosing(false); 
        sendEmail(str);
   }
- 
+  useEffect(()=>{
+     index > 5 ? handleFire(): null
+  },[index])
   return (
     <>
       <Head>
@@ -269,30 +238,29 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-    <div className={styles.content}>
+    { index  > 5 && <div className={styles.content}>
       <div className={styles.images}>
         <Image
-          src="/cute-girl-sheep.png"
-          width={350}
-          height={350}
-          alt="sad"
+          src="/cute-girl-sleeping-sheep.png"
+          width={360}
+          height={360}
+          alt="sheep"
           style={{ borderRadius: "20px" }}
         />
-       
       </div>
-      <div className={styles.heartContent}> 
+      <div className={styles.heartContent}>
+
       
         <h1 style={{ color: "#fff" }}>
           <Typewriter
             options={{
               strings: [
-                "كل عام وانتي بألف خير يا بانة الله يجعله عيد خير وبركة عليكي",
-                "الله يجعله عيد خير عليكي والله يحققلك كل امانيكي وينور دربك ويحقق مرادك ويرفع قدرك ومقامك وييسر امرك ويسر قلبك ويطيب خاطرك بكلشي بتتمنيه ",
-                "عيد اضحى مبارك عليكي وعلى عائلتك جميعا",
-                "كل عام وأنتي طيبة ونفسكي هادئة وحقق الله مرادك.",
-                "  الله يجمعنا فيما يرضاه وسنة الجاي او البعدها ولو مستحيلة بس الله كريم انو نكون عم نحج مع بعض ونوقف على جبل عرفات مع بعض", 
-                "كل عام وانتي بألف خير يا دكتورة وانا بعتذر منك بأي شي انا اذيتك فيه او كسرت خاطرك فيه ",
-                            ],
+                "تصبحي على خير يا بانة واحلام سعيدة",
+                "كل عام وانتي بألف خير وسعادة يا بانة والله يعطيكي العافية ويقويكي على مناوبة بكرا وعلى كل المناوبات ",
+                "صبحك الله بالخير، كل ما غرّد الطير الصراحة حبيت هي حسيتها بتشبها صوت صفير البلبل", 
+                "كل عام وانتي بخير يا دكتورة بانة",
+                "مرة التانية تصبحي على خير يا بانة يا دكتورتي والله يقسمك إلك ويرزقني ويفتح علاي وعليكي واكمل طريقي معكي وافرح بنجاحك واشاركك إنجازاتي"            
+              ],
               autoStart: true,
               loop: true,
               deleteSpeed: 10
@@ -300,8 +268,8 @@ export default function Home() {
           />
         </h1>
       </div>
-    </div>  
-    {/* { index <=5 &&   <div className={styles.content}>
+    </div>  }
+    { index <=5 &&   <div className={styles.content}>
        { index <= 5 && <div className={styles.images}>
               <Image
                 src={imges[index - 1]}
@@ -328,7 +296,7 @@ export default function Home() {
                 }}
               />
             </div>
-        </div>} */}
+        </div>}
         {/* {!rose && (
           <div className={styles.content}>
             <div className={styles.images}>
