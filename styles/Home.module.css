@@ -12,6 +12,89 @@
   
   color: #000;
 }
+ 
+/* CSS */
+.button1 {
+  background-color: #EA4C89;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button1:hover,
+.button1:focus {
+  background-color: #F082AC;
+}
+.button3 {
+   appearance: none;
+   background-color: #2ea44f;
+   border: 1px solid rgba(27, 31, 35, .15);
+   border-radius: 6px;
+   box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+   box-sizing: border-box;
+   color: #fff;
+   cursor: pointer;
+   display: inline-block;
+   font-family: -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+   font-size: 14px;
+   font-weight: 600;
+   line-height: 20px;
+   padding: 10px 16px;
+   position: relative;
+   text-align: center;
+   text-decoration: none;
+   user-select: none;
+   -webkit-user-select: none;
+   touch-action: manipulation;
+   vertical-align: middle;
+   white-space: nowrap;
+ }
+ .button2 {
+   background: #e62143;
+   border-radius: 11px;
+   box-sizing: border-box;
+   color: #fff;
+   cursor: pointer;
+   display: flex;
+   font-family: Mija,-apple-system,BlinkMacSystemFont,Roboto,"Roboto Slab","Droid Serif","Segoe UI",system-ui,Arial,sans-serif;
+   font-size: 14px;
+   font-weight: 700;
+   justify-content: center;
+   line-height: 20px;
+   padding: 10px 16px;
+   text-align: center;
+   text-decoration: none;
+   text-decoration-skip-ink: auto;
+   text-shadow: rgba(0, 0, 0, .3) 1px 1px 1px;
+   text-underline-offset: 1px;
+   transition: all .2s ease-in-out;
+   user-select: none;
+   -webkit-user-select: none;
+   touch-action: manipulation;
+   width: 100%;
+   word-break: break-word;
+   border: 0;
+ }
 .images{
    display: flex;
    flex-direction: column;

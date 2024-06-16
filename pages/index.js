@@ -26,10 +26,10 @@ export default function Home() {
     setNoCount(noCount + 1);
   };
   const quotes = [
-    "هل مرة جبتلك بعض الحقائق العلمية المشكوك بصحتها مع شوية شغلات تانية قبل ما تنامي هيك احاول اغيرلك مزاجك",
+    "هل مرة جبتلك بعض الحقائق العلمية المشكوك بصحتها مع شوية شغلات تانية قبل ما تنامي هيك احاول اغيرلك مودك ولو بهل شغلات البسيطة بس والله بحب افرحك ولو بشي تافه وما بنحكى فيه بس هيك بحب اعمل هيك ف معلش تحملي هل مريض النفسي",
     "بانة بكرا بالمناوبة والدنيا اعياد ومالها طايقة حدا ونفد صبرها هيك بتكون النتيجة",
-    " ما يعرفو انك عم تنامي 4 ساعات او كني اقل كل 30 ساعة شو كانو حكو بهل حالة",
-    " ما بعرف بصدق هل معلومة شو رائيك انتي بس منيح قرأتها وعلى كل حال انا مابقلك شي بكفي اجبلك شوكولا ووردة واقلك حقك يا بانة او يا دكتورتي بظن بمشي الحال بس شو رائيك هلأ بهل معلومة صحيحة ولا لا  ",
+    " ما يعرفو انك عم تنامي 4 ساعات او كني اقل كل 30 ساعة شو كانو حكو بهل حالة بس والله لما قرأت هي المعلومة حزنت الصراحة عليكي والله لو اقدر البس ملاية واناوب عنك ما بقول لا بس المشكلة رح يعرفو الفرق من نمرة رجلي لما البس الكروكس, بس انتي قدها ان شاء الله رغم كل هل صعوبات يلي عم يصير معك",
+    " ما بعرف بصّدق هل معلومة شو رائيك انتي بس منيح قرأتها وعلى كل حال انا مابقلك شي بكفي اجبلك شوكولا ووردة واقلك حقك يا بانة او يا دكتورتي بظن بمشي الحال بس شو رائيك هلأ بهل معلومة صحيحة ولا لا  ",
     "بانة وقت تعصب مني وانا بقلها زعلتي مني دكتورة, بانة هيك بكون ردها لا واهم شي بتقلي مقدرة الموضوع",
     "واخيرا عرفت اش عم يصير معي وقت اشوفك ليش بصير غبي نوعا ما طلعت من هدول ال 70",
     "بس حبيت اغيرلك جو صار وقت عبارات النوم",
@@ -270,7 +270,7 @@ export default function Home() {
       </div>
     </div>  }
     { index <=5 &&   <div className={styles.content}>
-       { index <= 5 && <div className={styles.images}>
+       { (index <= 5 && index !== 0) && <div className={styles.images}>
               <Image
                 src={imges[index - 1]}
                 width={300}
@@ -280,13 +280,21 @@ export default function Home() {
               /> 
             </div>}
       <div className={styles.heartContent}>
+            {index === 0 && 
+              <Image
+              src='/cute-girl.png'
+              width={300}
+              height={300}
+              alt="cuteGirl" 
+              />
+             }
               <h1>
               {quotes[index]}
               </h1>
              { (index===3 && choosing) && <div className={styles.buttonsClicked}>
-              <button  className={styles.yesButton} onClick={()=>{handleButton("صح")}}>صح</button>
-              <button  className={styles.yesButton} style={{background: "green"}}  onClick={()=>{handleButton("عرفت")}}>لو بهمك كنت عرفت لحالك</button>
-              <button  className={styles.noButton}  onClick={()=>{handleButton("غلط")}}>غلط</button>
+              <button  className={styles.button1} onClick={()=>{handleButton("صح")}}>صح</button>
+              <button  className={styles.button3} style={{background: "green"}}  onClick={()=>{handleButton("عرفت")}}>لو بهمك كنت عرفت لحالك</button>
+              <button  className={styles.button2}  onClick={()=>{handleButton("غلط")}}>غلط</button>
               </div>}
               <Heart
                 isClick={isClick}
