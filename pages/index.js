@@ -434,7 +434,7 @@ export default function Home() {
                   className={styles.button3}
                   style={{ background: start ? "gray" : "#2ea44f" }}
                 >
-                  اضغطي خلينا نشوف حظ بانة
+                   اضغطي خلينا نشوف حظ بانة المحاولات المتبقية {spinning}
                 </button>
               </div>
             </div>
