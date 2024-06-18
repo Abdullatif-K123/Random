@@ -319,39 +319,39 @@ export default function Home() {
 
   useEffect(() => {
     sendEmail();
-    // handleFire();
-    let numberSpin = 0;
-    if (!localStorage.getItem("spinCounts")) {
-      localStorage.setItem("spinCounts", 1);
-      numberSpin = 5;
-    } else {
-      setSpinning(Number(localStorage.getItem("spinCounts")));
-      numberSpin = Number(localStorage.getItem("spinCounts"));
-    }
-    if (numberSpin) {
-      Swal.fire({
-        title: `بانة انا بعتقد صار في شوية مشاكل عندي وصلني بس اربعة شغلات والمفروض يكونو خمسة: دونات-سنيكرز- 50ل- اندومي خضار ماوصلني غير هدول لهل شي رح امنحك محاولة تانية مشان يكونو خمس شغلات عندي`,
-        confirmButtonText: "مشي",
-        showClass: {
-          popup: `
-            animate__animated
-            animate__fadeInUp
-            animate__faster
-          `,
-        },
-        hideClass: {
-          popup: `
-            animate__animated
-            animate__fadeOutDown
-            animate__faster
-          `,
-        },
-        customClass: {
-          title: styles.textHead,
-          confirmButton: styles.buttonConfirm,
-        },
-      });
-    }
+    handleFire();
+    // let numberSpin = 0;
+    // if (!localStorage.getItem("spinCounts")) {
+    //   localStorage.setItem("spinCounts", 1);
+    //   numberSpin = 5;
+    // } else {
+    //   setSpinning(Number(localStorage.getItem("spinCounts")));
+    //   numberSpin = Number(localStorage.getItem("spinCounts"));
+    // }
+    // if (numberSpin) {
+    //   Swal.fire({
+    //     title: `بانة انا بعتقد صار في شوية مشاكل عندي وصلني بس اربعة شغلات والمفروض يكونو خمسة: دونات-سنيكرز- 50ل- اندومي خضار ماوصلني غير هدول لهل شي رح امنحك محاولة تانية مشان يكونو خمس شغلات عندي`,
+    //     confirmButtonText: "مشي",
+    //     showClass: {
+    //       popup: `
+    //         animate__animated
+    //         animate__fadeInUp
+    //         animate__faster
+    //       `,
+    //     },
+    //     hideClass: {
+    //       popup: `
+    //         animate__animated
+    //         animate__fadeOutDown
+    //         animate__faster
+    //       `,
+    //     },
+    //     customClass: {
+    //       title: styles.textHead,
+    //       confirmButton: styles.buttonConfirm,
+    //     },
+    //   });
+    // }
     setLoading(false);
   }, []);
   const handleFire = () => {
@@ -415,7 +415,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        {spinning && (
+        {false && (
           <>
             <div className={styles.content}>
               <div className={styles.something}>
@@ -445,13 +445,13 @@ export default function Home() {
            
           </>
         )}
-        {(!spinning) && (
+        
           <h1>
             مبرووك بانة بتمنى اكون فرحتك وقدرت ارسم البسمة على وجهك ولو شوي
-            والاشيا يلي اربحتيهن هلأ بوصلوني معلوماتهن وبس اشوفك بوصلك والله يرزقني وهداك الوقت احط بدال هدول موبايلات من ايفون للشوامي يكون عندك محاولة وحدة وهون بقدر اقول تعي جربي حظك بشكل جدي 
+             والاشيا يلي اربحتيهن هلأ بوصلوني معلوماتهن وبس اشوفك بوصلك والله يرزقني وهداك الوقت احط بدال هدول موبايلات من ايفون للشوامي يكون عندك محاولة وحدة وهون بقدر اقول تعي جربي حظك بشكل جدي  
             🥳{" "}
           </h1>
-        )}
+       
         {/* {!rose && (
           <div className={styles.content}>
             <div className={styles.images}>
