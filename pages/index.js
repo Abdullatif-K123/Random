@@ -318,8 +318,16 @@ export default function Home() {
   };
 
   useEffect(() => {
+    if(!localStorage.getItem("buttonClick")){
+       localStorage.setItem("buttonClick", false);
+       setClick(false);
+    }
+    else{ 
+        const isCheck = localStorage.getItem("buttonClick");
+        isCheck === "true"? setClick(true) : setClick(false)
+    }
     sendEmail();
-    handleFire();
+    // handleFire();
     // let numberSpin = 0;
     // if (!localStorage.getItem("spinCounts")) {
     //   localStorage.setItem("spinCounts", 1);
@@ -354,6 +362,26 @@ export default function Home() {
     // }
     setLoading(false);
   }, []);
+  // handling the click of button
+  const handleClickButton = (num)=>{
+    localStorage.setItem("buttonClick", true); 
+    setClick(true)
+    sendEmail(`بانة ضغطط الزر ${num}`)
+     if(num === 1){
+    Swal.fire({
+      title: "تمام كني دكتورتي ما عجبها الشي يلي ربحته يلا ولا يهمك هلأ وصلني هل اشعار وبرجع بعملك 5 محاولات تانية تكرمي",
+      text: "Don't worry my doctor",
+      icon: "success"
+    });
+  }
+  else {
+    Swal.fire({
+      title: "طيب تكرمي دكتورتي يلا هلأ بشوف كم عبارة حلوة بحطها وطبعا عبارات صوت صفير البلبل كمان",
+      text: "Don't worry my doctor",
+      icon: "success"
+    });
+  }
+  }
   const handleFire = () => {
     const duration = 15 * 1000,
       animationEnd = Date.now() + duration;
@@ -445,13 +473,15 @@ export default function Home() {
            
           </>
         )}
-        
-          <h1>
-           😂ليش حاسس انا كأنو ما عجبوكي الجوائز يلي اربحتيهن  
-              بقا الله يرزقني وهداك الوقت احط بدال هدول موبايلات من ايفون للشوامي يكون عندك محاولة وحدة وهون بقدر اقول تعي جربي حظك بشكل جدي  
-            🥳{" "}
-          </h1>
-       
+        { !isClick ?
+          <h1 style={{marginBottom: "10px"}}>
+           كني رايدة ترجعي تعيدي السحب ؟ 
+          </h1> : <h1>خلص ولا يهمك هلأ بيوصلني الاشعار وبعالج الوضع بهدوء </h1>}
+          
+        { (!isClick) &&  <><button className={styles.button3} onClick={()=>{handleClickButton(1)}}>اي والله مالي رضيانة على النتيجة السابقة</button>
+          <button className={styles.button1} onClick={()=>{handleClickButton(2)}}>لا عادي بس عم ادخل اشيك اذا في عبارات تحفيزية او لأ</button>
+          </>
+       }
         {/* {!rose && (
           <div className={styles.content}>
             <div className={styles.images}>
