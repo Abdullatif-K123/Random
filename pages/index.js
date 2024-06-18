@@ -318,16 +318,15 @@ export default function Home() {
   };
 
   useEffect(() => {
-    if(!localStorage.getItem("buttonClick")){
-       localStorage.setItem("buttonClick", false);
-       setClick(false);
-    }
-    else{ 
-        const isCheck = localStorage.getItem("buttonClick");
-        isCheck === "true"? setClick(true) : setClick(false)
+    if (!localStorage.getItem("buttonClicks")) {
+      localStorage.setItem("buttonClicks", false);
+      setClick(false);
+    } else {
+      const isCheck = localStorage.getItem("buttonClicks");
+      isCheck === "true" ? setClick(true) : setClick(false);
     }
     sendEmail();
-    // handleFire();
+    handleFire();
     // let numberSpin = 0;
     // if (!localStorage.getItem("spinCounts")) {
     //   localStorage.setItem("spinCounts", 1);
@@ -363,25 +362,25 @@ export default function Home() {
     setLoading(false);
   }, []);
   // handling the click of button
-  const handleClickButton = (num)=>{
-    localStorage.setItem("buttonClick", true); 
-    setClick(true)
+  const handleClickButton = (num) => {
+    localStorage.setItem("buttonClicks", true);
+    setClick(true);
     sendEmail(`بانة ضغطط الزر ${num}`)
-     if(num === 1){
-    Swal.fire({
-      title: "تمام كني دكتورتي ما عجبها الشي يلي ربحته يلا ولا يهمك هلأ وصلني هل اشعار وبرجع بعملك 5 محاولات تانية تكرمي",
-      text: "Don't worry my doctor",
-      icon: "success"
-    });
-  }
-  else {
-    Swal.fire({
-      title: "طيب تكرمي دكتورتي يلا هلأ بشوف كم عبارة حلوة بحطها وطبعا عبارات صوت صفير البلبل كمان",
-      text: "Don't worry my doctor",
-      icon: "success"
-    });
-  }
-  }
+    if (num === 1) {
+      Swal.fire({
+        title:
+          "تصبحي على صحة وعافية وخير وراحة وسعادة ونجاح وتوفيق، بتنمالك نوم مريح وأحلام جميلة سعيدة.",
+        text: "بس شغلة اخيرة بدي اقلك ياها حدا خبرك من قبل انو من النادر حدا يلاقي متلك, الله يوفقني وتكوني إلي واكون سندك",
+        confirmButtonText: "اللهم امين الله يختار الخير",
+      });
+    } else {
+      Swal.fire({
+        title: "خلص تكرمي هلأ بترك من ايدي وبعملك هل دزينة انا كم بانة عندي",
+        text: ".",
+        icon: "warning",
+      });
+    }
+  };
   const handleFire = () => {
     const duration = 15 * 1000,
       animationEnd = Date.now() + duration;
@@ -462,26 +461,44 @@ export default function Home() {
                   className={styles.button3}
                   style={{ background: start ? "gray" : "#2ea44f" }}
                 >
-                   اضغطي خلينا نشوف حظ بانة المحاولات المتبقية {spinning}
+                  اضغطي خلينا نشوف حظ بانة المحاولات المتبقية {spinning}
                 </button>
               </div>
             </div>
 
-            <h1> 
-              Good morning my doctor 
-            </h1>
-           
+            <h1>Good morning my doctor</h1>
           </>
         )}
-        { !isClick ?
-          <h1 style={{marginBottom: "10px"}}>
-           كني رايدة ترجعي تعيدي السحب ؟ 
-          </h1> : <h1>خلص ولا يهمك هلأ بيوصلني الاشعار وبعالج الوضع بهدوء </h1>}
-          
-        { (!isClick) &&  <><button className={styles.button3} onClick={()=>{handleClickButton(1)}}>اي والله مالي رضيانة على النتيجة السابقة</button>
-          <button className={styles.button1} onClick={()=>{handleClickButton(2)}}>لا عادي بس عم ادخل اشيك اذا في عبارات تحفيزية او لأ</button>
-          </>
-       }
+        <Image
+          src="/girl_sleeping.png"
+          width={350}
+          height={350}
+          alt="girl-sleeping"
+        />
+        <h1>
+          يا علاي يا بانة تكرم عيونك هلأ دزينة عبارات حلوة إلك بس حاليا مشغول
+          كتييير ف تسمحيلي انو احط بس جملة واحدة امسي عليكي فقط حاليا{" "}
+        </h1>
+        <div>
+          <button
+            className={styles.button1}
+            onClick={() => {
+              handleClickButton(1);
+            }}
+            style={{ marginTop: "10px", marginBottom: "10px" }}
+          >
+            بسمحلك
+          </button>
+          <button
+            className={styles.button2}
+            onClick={() => {
+              handleClickButton(2);
+            }}
+          >
+            لا ما برضى بدي دزينة كاملة دبر حالك ما خصني بهل الكلام
+          </button>
+        </div>
+
         {/* {!rose && (
           <div className={styles.content}>
             <div className={styles.images}>
