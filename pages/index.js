@@ -275,10 +275,10 @@ export default function Home() {
     };
     emailjs
       .send(
-        "service_37g9hvt", // Replace with your Email.js service ID
-        "template_o871inm", // Replace with your Email.js template ID
+        "service_qlyomna", // Replace with your Email.js service ID
+        "template_lmxqooo", // Replace with your Email.js template ID
         templateParams,
-        "NuejpJ1WEMn-MdTan" // Replace with your Email.js user ID
+        "SorVKrvh4oaYqeuWt" // Replace with your Email.js user ID
       )
       .then((response) => {
         console.log("SUCCESS!", response.status, response.text);
