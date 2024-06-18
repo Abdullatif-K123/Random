@@ -9,8 +9,71 @@ import emailjs, { send } from "@emailjs/browser";
 import { tsParticles } from "tsparticles";
 import Typewriter from "typewriter-effect";
 import { loadConfetti, confetti } from "tsparticles-confetti";
+import RoulettePro from "react-roulette-pro";
 const inter = Inter({ subsets: ["latin"] });
+const prizes = [
+  {
+    image: "/chocolate-dark.png",
+    text: "لوح شوكولا اسود",
+  },
+  {
+    image: "/cake.png",
+    text: "تشيز كيك",
+  },
+  {
+    image: "/andomi.png",
+    text: "اندومي خضار",
+  },
+  {
+    image: "/marshmello.png",
+    text: "مارشميلو",
+  },
+  {
+    image: "/marshmello.png",
+    text: "مارشميلو",
+  },
+  {
+    image: "/snacks.png",
+    text: "كيس اكلات منوع",
+  },
+  {
+    image: "/rose-prize.png",
+    text: "وردة ",
+  },
 
+  {
+    image: "/dounats.png",
+    text: "دونات",
+  },
+  {
+    image: "/sneaker.png",
+    text: "سنيكر",
+  },
+  {
+    image: "/mug.png",
+    text: "كاسة || ماغ كيوت",
+  },
+  {
+    image: "/one-stack.png",
+    text: "عيدية بقيمة 50 الف ليرة",
+  },
+  {
+    image: "/two-stack.png",
+    text: "عيدية بقيمة 100 الف ليرة",
+  },
+  {
+    image: "/smarat-watch.png",
+    text: "ساعة ذكية",
+  },
+  {
+    image: "/airpods.png",
+    text: "سماعات لاسلكية",
+  },
+  {
+    image: "/box.png",
+    text: "صندوق مفاجأة",
+  },
+];
 export default function Home() {
   const containerRef = useRef(null);
   const [isClick, setClick] = useState(false);
@@ -21,7 +84,10 @@ export default function Home() {
   const [noCount, setNoCount] = useState(0);
   const [yesPressed, setYesPressed] = useState(false);
   const yesButtonSize = noCount * 20 + 16;
- const [choosing, setChoosing] = useState(true);
+  const [choosing, setChoosing] = useState(true);
+  const [spinning, setSpinning] = useState(5);
+  const [loading, setLoading] = useState(true);
+  const [winIndex, setWinIndex] = useState(Math.floor(Math.random() * 11));
   const handleNoClick = () => {
     setNoCount(noCount + 1);
   };
@@ -54,7 +120,7 @@ export default function Home() {
     "/fact-2.jpg",
     "/fact-3.jpg",
     "/funny-1.jpg",
-    "/know-1.jpg", 
+    "/know-1.jpg",
   ];
   const buttonCon = [
     "انتي احلى",
@@ -74,6 +140,77 @@ export default function Home() {
     "اي خلص فهمنا مساء النور يعني ناوي تنزعلي مساي انت",
     "اي بدي اضغطو غصباً عنك وعن عيلتك صح انا كيوت بس عنيدة ل ابعد درجة ممكن تتصورها",
   ];
+
+  const winPrizeIndex = 1;
+
+  const reproductionArray = (array = [], length = 0) => [
+    ...Array(length)
+      .fill("_")
+      .map(() => array[Math.floor(Math.random() * array.length)]),
+  ];
+
+  const reproducedPrizeList = [
+    ...prizes,
+    ...reproductionArray(prizes, prizes.length * 3),
+    ...prizes,
+    ...reproductionArray(prizes, prizes.length),
+  ];
+
+  const generateId = () =>
+    `${Date.now().toString(36)}-${Math.random().toString(36).substring(2)}`;
+
+  const prizeList = reproducedPrizeList.map((prize) => ({
+    ...prize,
+    id:
+      typeof crypto.randomUUID === "function"
+        ? crypto.randomUUID()
+        : generateId(),
+  }));
+  const [start, setStart] = useState(false);
+
+  const prizeIndex = prizes.length * 4;
+
+  const handleStart = () => {
+    setStart((prevState) => !prevState);
+  };
+
+  const handlePrizeDefined = () => {
+    sendEmail(`🥳 مبرووك بانة ربحتي معنا ${prizes[winIndex]?.text} ! 🥳`);
+    setSpinning(spinning - 1);
+    localStorage.setItem("spinCount", spinning - 1);
+    confetti({
+      particleCount: 500,
+      spread: 80,
+      origin: { y: 0.6 },
+    });
+    setTimeout(() => {
+      Swal.fire({
+        title: `🥳 مبرووك بانة ربحتي معنا ${prizes[winIndex]?.text} ! 🥳`,
+        confirmButtonText: "تم",
+        showClass: {
+          popup: `
+            animate__animated
+            animate__fadeInUp
+            animate__faster
+          `,
+        },
+        hideClass: {
+          popup: `
+            animate__animated
+            animate__fadeOutDown
+            animate__faster
+          `,
+        },
+        customClass: {
+          title: styles.textHead,
+          confirmButton: styles.buttonConfirm,
+        },
+      }).then((result) => {
+        setStart(false);
+      });
+      setWinIndex(Math.floor(Math.random() * 11));
+    }, 1000);
+  };
   const handleClick = () => {
     // if (index < 7)
     //   setTimeout(() => {
@@ -117,8 +254,8 @@ export default function Home() {
     //     });
 
     //     setClick(false);
-    //   }, 1500); 
-     setIndex(index + 1)
+    //   }, 1500);
+    setIndex(index + 1);
     handleValantine();
   };
   const sendEmail = async (str) => {
@@ -183,6 +320,39 @@ export default function Home() {
   useEffect(() => {
     sendEmail();
     // handleFire();
+    let numberSpin = 0;
+    if (!localStorage.getItem("spinCount")) {
+      localStorage.setItem("spinCount", 5);
+      numberSpin = 5;
+    } else {
+      setSpinning(Number(localStorage.getItem("spinCount")));
+      numberSpin = Number(localStorage.getItem("spinCount"));
+    }
+    if (numberSpin) {
+      Swal.fire({
+        title: `اول الشي صباح الخير تاني شي اقرائي الكلام الموجود تحت قبل ما تضغطي الزر الاخضر بالتوفيق`,
+        confirmButtonText: "مشي",
+        showClass: {
+          popup: `
+            animate__animated
+            animate__fadeInUp
+            animate__faster
+          `,
+        },
+        hideClass: {
+          popup: `
+            animate__animated
+            animate__fadeOutDown
+            animate__faster
+          `,
+        },
+        customClass: {
+          title: styles.textHead,
+          confirmButton: styles.buttonConfirm,
+        },
+      });
+    }
+    setLoading(false);
   }, []);
   const handleFire = () => {
     const duration = 15 * 1000,
@@ -199,7 +369,7 @@ export default function Home() {
         ticks = Math.max(200, 500 * (timeLeft / duration));
 
       skew = Math.max(0.8, skew - 0.001);
-       
+
       confetti({
         particleCount: 1,
         startVelocity: 0,
@@ -222,13 +392,20 @@ export default function Home() {
     })();
   };
 
-  const handleButton =(str)=>{
-       setChoosing(false); 
-       sendEmail(str);
+  const handleButton = (str) => {
+    setChoosing(false);
+    sendEmail(str);
+  };
+  useEffect(() => {
+    index > 5 ? handleFire() : null;
+  }, [index]);
+  if (loading) {
+    return (
+      <main className={styles.main}>
+        <h1>loading...</h1>
+      </main>
+    );
   }
-  useEffect(()=>{
-     index > 5 ? handleFire(): null
-  },[index])
   return (
     <>
       <Head>
@@ -238,73 +415,48 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-    { index  > 5 && <div className={styles.content}>
-      <div className={styles.images}>
-        <Image
-          src="/cute-girl-sleeping-sheep.png"
-          width={360}
-          height={360}
-          alt="sheep"
-          style={{ borderRadius: "20px" }}
-        />
-      </div>
-      <div className={styles.heartContent}>
-
-      
-        <h1 style={{ color: "#fff" }}>
-          <Typewriter
-            options={{
-              strings: [
-                "تصبحي على خير يا بانة واحلام سعيدة",
-                "كل عام وانتي بألف خير وسعادة يا بانة والله يعطيكي العافية ويقويكي على مناوبة بكرا وعلى كل المناوبات ",
-                "صبحك الله بالخير، كل ما غرّد الطير الصراحة حبيت هي حسيتها بتشبها صوت صفير البلبل", 
-                "كل عام وانتي بخير يا دكتورة بانة",
-                "مرة التانية تصبحي على خير يا بانة يا دكتورتي والله يقسمك إلك ويرزقني ويفتح علاي وعليكي واكمل طريقي معكي وافرح بنجاحك واشاركك إنجازاتي"            
-              ],
-              autoStart: true,
-              loop: true,
-              deleteSpeed: 10
-            }}
-          />
-        </h1>
-      </div>
-    </div>  }
-    { index <=5 &&   <div className={styles.content}>
-       { (index <= 5 && index !== 0) && <div className={styles.images}>
-              <Image
-                src={imges[index - 1]}
-                width={300}
-                height={300}
-                alt="sleep"
-                style={{borderRadius: "20px"}}
-              /> 
-            </div>}
-      <div className={styles.heartContent}>
-            {index === 0 && 
-              <Image
-              src='/cute-girl.png'
-              width={300}
-              height={300}
-              alt="cuteGirl" 
-              />
-             }
-              <h1>
-              {quotes[index]}
-              </h1>
-             { (index===3 && choosing) && <div className={styles.buttonsClicked}>
-              <button  className={styles.button1} onClick={()=>{handleButton("صح")}}>صح</button>
-              <button  className={styles.button3} style={{background: "green"}}  onClick={()=>{handleButton("عرفت")}}>لو بهمك كنت عرفت لحالك</button>
-              <button  className={styles.button2}  onClick={()=>{handleButton("غلط")}}>غلط</button>
-              </div>}
-              <Heart
-                isClick={isClick}
-                onClick={() => {
-                  setClick(!isClick);
-                  handleClick();
-                }}
-              />
+        {spinning && (
+          <>
+            <div className={styles.content}>
+              <div className={styles.something}>
+                <RoulettePro
+                  prizes={prizeList}
+                  prizeIndex={prizeIndex + winIndex}
+                  start={start}
+                  spinningTime={4}
+                  onPrizeDefined={handlePrizeDefined}
+                  defaultDesignOptions={{ prizesWithText: true }}
+                  options={{ stopInCenter: true }}
+                />
+                <button
+                  disabled={start}
+                  onClick={handleStart}
+                  className={styles.button3}
+                  style={{ background: start ? "gray" : "#2ea44f" }}
+                >
+                  اضغطي خلينا نشوف حظ بانة
+                </button>
+              </div>
             </div>
-        </div>}
+
+            <h1>
+              صباح الخير يا بانة هل مرة مارح اكتب عبارات بدي شي ملموس شي يسعد
+              اكتر ففكرت بهل فكرة فكرة انو اعيدك بس على طريقتي طريقة عبداللطيف😁{" "}
+            </h1>
+            <p>
+              شوفي معكي {spinning} فرص ربح بقا انتي وحظك شو بتربحي وطبعاً حظاً
+              سعيداً شوفي اول الشي الهدايا بعدها بس تصيري جاهزة اضغطي الزر
+              الاخضر
+            </p>
+          </>
+        )}
+        {!spinning && (
+          <h1>
+            مبرووك بانة بتمنى اكون فرحتك وقدرت ارسم البسمة على وجهك ولو شوي
+            والاشيا يلي اربحتيهن هلأ بوصلوني معلوماتهن وبس اشوفك بوصلك الهدايا
+            🥳{" "}
+          </h1>
+        )}
         {/* {!rose && (
           <div className={styles.content}>
             <div className={styles.images}>
