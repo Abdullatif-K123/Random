@@ -2,13 +2,13 @@
   display: flex;
   flex-direction: column; 
   align-items: center;
-
-  padding: 2rem;
+ 
+  padding-top: 2rem;
   min-height: 100vh;
-  background: #0F2027;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
- text-align: center;
+  background: #642B73;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #C6426E, #642B73);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #C6426E, #642B73); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+   text-align: center;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   color: #f9f9f9;
 
@@ -18,7 +18,47 @@ background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+
     margin-bottom: 15px;
 }
 
- 
+ .content{
+    width: 100%;
+    display: flex;
+    align-items: center;
+   justify-content: center;
+    gap: 10px;
+    margin-top: 50px;
+    padding:  10px;
+ }
+ .holiday{ 
+   padding: 10px;
+   border: 1px solid #ccc;
+   border-radius: 10px;
+   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+   transition: 0.3s;
+ }
+ .holiday:active {
+   transform: scale(0.95);
+ }
+ .holiday > img{ 
+   border-radius: 10px;
+ }
+ .holiday > p {
+   font-size: 20px;
+   font-weight: bold;
+   margin-top: 10px;
+ }
+ .content > input {
+   width: 100%;
+   direction: rtl;
+   background-color: #fff;
+   color: #C6426E;
+   padding: 10px;
+   border: 1px solid #ccc;
+   border-radius: 5px;
+   outline: none;
+ }
+ .content > input:focus {
+   border-color: #007bff;
+   box-shadow: 0 0 5px #007bff;
+ }
 /* CSS */
 .button1 {
   background-color: #EA4C89;

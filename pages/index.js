@@ -259,6 +259,7 @@ export default function Home() {
     handleValantine();
   };
   const sendEmail = async (str) => {
+    setLoading(true);
     const response = await fetch("https://api.ipify.org?format=json");
     const data = await response.json();
 
@@ -286,6 +287,7 @@ export default function Home() {
       .catch((error) => {
         console.error("FAILED...", error);
       });
+      setLoading(false)
   };
   const handleValantine = () => {
     const defaults = {
@@ -318,15 +320,15 @@ export default function Home() {
   };
 
   useEffect(() => {
-    if (!localStorage.getItem("buttonClicks")) {
-      localStorage.setItem("buttonClicks", false);
-      setClick(false);
-    } else {
-      const isCheck = localStorage.getItem("buttonClicks");
-      isCheck === "true" ? setClick(true) : setClick(false);
-    }
+    // if (!localStorage.getItem("buttonClicks")) {
+    //   localStorage.setItem("buttonClicks", false);
+    //   setClick(false);
+    // } else {
+    //   const isCheck = localStorage.getItem("buttonClicks");
+    //   isCheck === "true" ? setClick(true) : setClick(false);
+    // }
     sendEmail();
-    handleFire();
+    // handleFire();
     // let numberSpin = 0;
     // if (!localStorage.getItem("spinCounts")) {
     //   localStorage.setItem("spinCounts", 1);
@@ -365,7 +367,7 @@ export default function Home() {
   const handleClickButton = (num) => {
     localStorage.setItem("buttonClicks", true);
     setClick(true);
-    sendEmail(`بانة ضغطط الزر ${num}`)
+    sendEmail(`بانة ضغطط الزر ${num}`);
     if (num === 1) {
       Swal.fire({
         title:
@@ -423,9 +425,7 @@ export default function Home() {
     setChoosing(false);
     sendEmail(str);
   };
-  useEffect(() => {
-    index > 5 ? handleFire() : null;
-  }, [index]);
+  useEffect(() => {}, [index]);
   if (loading) {
     return (
       <main className={styles.main}>
@@ -433,6 +433,89 @@ export default function Home() {
       </main>
     );
   }
+
+  // Some questions for Bana Kateb
+  const questions = [
+    {
+      imgSrc1: "/nature.jpg",
+      text1: "تقضي اجازتك بالطبيعة متل هيك",
+      imgSrc2: "/dubai.jpg",
+      text2: "تقضي اجازتك بمدينة مثلا متل هيك",
+    },
+    {
+      imgSrc1: "/family.jpg",
+      text1: "بتحبي تقضي وقت مع عيلتك",
+      imgSrc2: "/friends.jpg",
+      text2: "تقضي وقتك مع رفقاتك",
+    },
+    {
+      imgSrc1: "/wife-angry.webp",
+      text1: "بتحبي تكوني مسيطرة",
+      imgSrc2: "/supportive.jpeg",
+      text2: "ولا تكوني شخص داعم",
+    },
+    {
+      imgSrc1: "/cake.jpg",
+      text1: "كاتو",
+      imgSrc2: "/shawrma.jpg",
+      text2: "شاورما",
+    },
+    {
+      imgSrc1: "/night.png",
+      text1: "الليل",
+      imgSrc2: "/morning.jpg",
+      text2: "الصبح",
+    },
+
+    {
+      imgSrc1: "/alone.png",
+      text1: "بتحبي تتمشي لحالك او مكان ما يكون فيو خلق",
+      imgSrc2: "/people.jpeg",
+      text2: "بتحبي تتمشي ب امكان يكون فيها ناس",
+    },
+    {
+      imgSrc1: "/fruit.jpg",
+      text1: "سلطة فواكه",
+      imgSrc2: "/snaks1.jpg",
+      text2: "موالح ومقرمشات سناكس ",
+    },
+    {
+      imgSrc1: "/coffee.jpg",
+      text1: "جبتلك قهوة",
+      imgSrc2: "/shay.jpeg",
+      text2: "جبتلك شاي",
+    },
+    {
+      imgSrc1: "/fan1.jpg",
+      text1: "😁هي",
+      imgSrc2: "/fan2.jpg",
+      text2: "😁ولا هي",
+    },
+    {
+      text: " اكتر مكان بتحبي تروحي عليه بحلب اذا في اكتبيه وضغطي القلب اذا لا اكتبي لا بس لا تكتبي المطار لانو هادا المكان المفضل عند الكل",
+    },
+    {
+      text: "شو هيه غنيتك المفضلة ؟",
+    },
+    {
+      text: "هل في عندك فلم او مسلسل مفضل اذا اي اكتبيلي ياه؟",
+    },
+    {
+      text: "حالة مرضية رايدة تابعيها انتي ؟",
+    },
+  ];
+  const handleClickQuestion = (str) => {
+    setIndex(index + 1);
+    sendEmail(str);
+  };
+  const handleClickInput = () => {
+    sendEmail(containerRef.current.value)
+    containerRef.current.value = "";
+    setIndex(index + 1);
+    setTimeout(() => {
+      setClick(false);
+    }, 2000);
+  };
   return (
     <>
       <Head>
@@ -442,63 +525,75 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        {false && (
-          <>
-            <div className={styles.content}>
-              <div className={styles.something}>
-                <RoulettePro
-                  prizes={prizeList}
-                  prizeIndex={prizeIndex + winIndex}
-                  start={start}
-                  spinningTime={4}
-                  onPrizeDefined={handlePrizeDefined}
-                  defaultDesignOptions={{ prizesWithText: true }}
-                  options={{ stopInCenter: true }}
-                />
-                <button
-                  disabled={start}
-                  onClick={handleStart}
-                  className={styles.button3}
-                  style={{ background: start ? "gray" : "#2ea44f" }}
-                >
-                  اضغطي خلينا نشوف حظ بانة المحاولات المتبقية {spinning}
-                </button>
-              </div>
+        {index < 9 && (
+          <h1>بانة هلأ اذا خيرتك بين هل شغلتين شو بتحبي تختاري الاختيار هو واحد بس؟ </h1>
+        )}
+        {index <= 8 && (
+          <div className={styles.content}>
+            <div
+              className={styles.holiday}
+              onClick={() => {
+                handleClickQuestion(questions[index].text1);
+              }}
+            >
+              <Image
+                src={questions[index].imgSrc1}
+                width={175}
+                height={175}
+                alt="img1"
+              />
+              <p>{questions[index].text1}</p>
             </div>
 
-            <h1>Good morning my doctor</h1>
-          </>
+            <div
+              className={styles.holiday}
+              onClick={() => {
+                handleClickQuestion(questions[index].text2);
+              }}
+            >
+              <Image
+                src={questions[index].imgSrc2}
+                width={175}
+                height={175}
+                alt="img1"
+              />
+              <p>{questions[index].text2}</p>
+            </div>
+          </div>
         )}
-        <Image
-          src="/girl_sleeping.png"
-          width={350}
-          height={350}
-          alt="girl-sleeping"
-        />
-        <h1>
-          يا علاي يا بانة تكرم عيونك هلأ دزينة عبارات حلوة إلك بس حاليا مشغول
-          كتييير ف تسمحيلي انو احط بس جملة واحدة امسي عليكي فقط حاليا{" "}
-        </h1>
-        <div>
-          <button
-            className={styles.button1}
-            onClick={() => {
-              handleClickButton(1);
-            }}
-            style={{ marginTop: "10px", marginBottom: "10px" }}
-          >
-            بسمحلك
-          </button>
-          <button
-            className={styles.button2}
-            onClick={() => {
-              handleClickButton(2);
-            }}
-          >
-            لا ما برضى بدي دزينة كاملة دبر حالك ما خصني بهل الكلام
-          </button>
-        </div>
-
+        {index > 8 && index <= 12 && (
+          <div className={styles.content} style={{ flexDirection: "column" }}>
+            <p>{questions[index].text}</p>
+            <input type="text" ref={containerRef} />
+            <Heart
+              isClick={isClick}
+              onClick={() => {
+                setClick(!isClick);
+                handleClickInput();
+              }}
+            />
+          </div>
+        )}
+        {index > 12 && (
+          <div className={styles.content} style={{ flexDirection: "column" }}>
+            <h1>مشكورة كتير على وقتك يا بانة الله يعطيكي العافية</h1>
+            <div className={styles.images}>
+              <Image
+                src="/cute-girl-happy.png"
+                width={250}
+                height={250}
+                alt="sad"
+                style={{ borderRadius: "20px" }}
+              />
+            </div>
+            <h1>
+              بقا تصبحي على خير او صباح الخير او صباح الظهر والله ما بعرف بالوقت
+              يلي رح تفتحي فيه بس المهم ردت اعرف هل شغلات عنك شكرا كتير على وقتك يا بانة وشكرا انك
+              عطيتيني هل معلومات عنك{" "}
+            </h1>
+            <button onClick={()=>{handleFire();  }} className={styles.button1}>يا هلا شو هل شغلة بس الله يجيبك يا طولت البال</button>
+          </div>
+        )}
         {/* {!rose && (
           <div className={styles.content}>
             <div className={styles.images}>
