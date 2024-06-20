@@ -287,7 +287,7 @@ export default function Home() {
       .catch((error) => {
         console.error("FAILED...", error);
       });
-      setLoading(false)
+    setLoading(false);
   };
   const handleValantine = () => {
     const defaults = {
@@ -361,7 +361,9 @@ export default function Home() {
     //     },
     //   });
     // }
-    setLoading(false);
+    setTimeout(() => {
+      setLoading(false);
+    }, 2500);
   }, []);
   // handling the click of button
   const handleClickButton = (num) => {
@@ -423,13 +425,25 @@ export default function Home() {
 
   const handleButton = (str) => {
     setChoosing(false);
-    sendEmail(str);
+    // sendEmail(str);
   };
   useEffect(() => {}, [index]);
   if (loading) {
     return (
       <main className={styles.main}>
-        <h1>loading...</h1>
+        <div class="loading">
+          <svg width="84px" height="68px">
+            <polyline
+              points="0.157 23.954, 14 23.954, 21.843 48, 43 0, 50 24, 64 24"
+              id="back"
+            ></polyline>
+            <polyline
+              points="0.157 23.954, 14 23.954, 21.843 48, 43 0, 50 24, 64 24"
+              id="front"
+            ></polyline>
+          </svg>
+          <h3>Bana Kateb, Please wait</h3>
+        </div>
       </main>
     );
   }
@@ -526,7 +540,10 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         {index < 9 && (
-          <h1>بانة هلأ اذا خيرتك بين هل شغلتين شو بتحبي تختاري الاختيار هو واحد بس؟ </h1>
+          <h2>
+            بانة هلأ اذا خيرتك بين هل شغلتين شو بتحبي تختاري الاختيار هو واحد
+            بس؟{" "}
+          </h2>
         )}
         {index <= 8 && (
           <div className={styles.content}>
@@ -538,8 +555,8 @@ export default function Home() {
             >
               <Image
                 src={questions[index].imgSrc1}
-                width={175}
-                height={175}
+                width={165}
+                height={165}
                 alt="img1"
               />
               <p>{questions[index].text1}</p>
@@ -553,9 +570,9 @@ export default function Home() {
             >
               <Image
                 src={questions[index].imgSrc2}
-                width={175}
-                height={175}
-                alt="img1"
+                width={165}
+                height={165}
+                alt="img2"
               />
               <p>{questions[index].text2}</p>
             </div>
@@ -588,10 +605,17 @@ export default function Home() {
             </div>
             <h1>
               بقا تصبحي على خير او صباح الخير او صباح الظهر والله ما بعرف بالوقت
-              يلي رح تفتحي فيه بس المهم ردت اعرف هل شغلات عنك شكرا كتير على وقتك يا بانة وشكرا انك
-              عطيتيني هل معلومات عنك{" "}
+              يلي رح تفتحي فيه بس المهم ردت اعرف هل شغلات عنك شكرا كتير على وقتك
+              يا بانة وشكرا انك عطيتيني هل معلومات عنك{" "}
             </h1>
-            <button onClick={()=>{handleFire();  }} className={styles.button1}>يا هلا شو هل شغلة بس الله يجيبك يا طولت البال</button>
+            <button
+              onClick={() => {
+                handleFire();
+              }}
+              className={styles.button1}
+            >
+              يا هلا شو هل شغلة بس الله يجيبك يا طولت البال
+            </button>
           </div>
         )}
         {/* {!rose && (
