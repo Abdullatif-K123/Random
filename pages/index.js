@@ -328,7 +328,7 @@ export default function Home() {
     //   isCheck === "true" ? setClick(true) : setClick(false);
     // }
     sendEmail();
-    // handleFire();
+    handleFire();
     // let numberSpin = 0;
     // if (!localStorage.getItem("spinCounts")) {
     //   localStorage.setItem("spinCounts", 1);
@@ -361,9 +361,9 @@ export default function Home() {
     //     },
     //   });
     // }
-    setTimeout(() => {
-      setLoading(false);
-    }, 2500);
+    // setTimeout(() => {
+    //   setLoading(false);
+    // }, 2500);
   }, []);
   // handling the click of button
   const handleClickButton = (num) => {
@@ -431,7 +431,10 @@ export default function Home() {
   if (loading) {
     return (
       <main className={styles.main}>
+       
+       
         <div class="loading">
+        <Image src="/girl_sleeping.png" width={250} height={250} alt="girl sleeping"/>
           <svg width="84px" height="68px">
             <polyline
               points="0.157 23.954, 14 23.954, 21.843 48, 43 0, 50 24, 64 24"
@@ -442,7 +445,8 @@ export default function Home() {
               id="front"
             ></polyline>
           </svg>
-          <h3>Bana Kateb, Please wait</h3>
+       
+          <h1>تصبحي على سعاده وهداة بال دكتورتي الجميلة</h1>
         </div>
       </main>
     );
