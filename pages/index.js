@@ -428,7 +428,7 @@ export default function Home() {
     // sendEmail(str);
   };
   useEffect(() => {}, [index]);
-  if (loading) {
+  if (true) {
     return (
       <main className={styles.main}>
        
@@ -446,7 +446,7 @@ export default function Home() {
             ></polyline>
           </svg>
        
-          <h1>تصبحي على سعاده وهداة بال دكتورتي الجميلة</h1>
+          <h1>تصبحي على سعاده وهداة بال دكتورتي السوبر هيرو الجميلة</h1>
         </div>
       </main>
     );
@@ -595,7 +595,7 @@ export default function Home() {
             />
           </div>
         )}
-        {true && (
+        {false && (
           <div className={styles.content} style={{ flexDirection: "column" }}>
             <h1>مشكورة كتير على وقتك يا بانة الله يعطيكي العافية</h1>
             <div className={styles.images}>
