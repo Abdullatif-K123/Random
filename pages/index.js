@@ -539,13 +539,13 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        {index < 9 && (
+        {false && (
           <h2>
             بانة هلأ اذا خيرتك بين هل شغلتين شو بتحبي تختاري الاختيار هو واحد
             بس اضغطي على احد الصورتين {" "}
           </h2>
         )}
-        {index <= 8 && (
+        {false && (
           <div className={styles.content}>
             <div
               className={styles.holiday}
@@ -578,7 +578,7 @@ export default function Home() {
             </div>
           </div>
         )}
-        {index > 8 && index <= 12 && (
+        {false && (
           <div className={styles.content} style={{ flexDirection: "column" }}>
             <p>{questions[index].text}</p>
             <input type="text" ref={containerRef} />
@@ -591,7 +591,7 @@ export default function Home() {
             />
           </div>
         )}
-        {index > 12 && (
+        {true && (
           <div className={styles.content} style={{ flexDirection: "column" }}>
             <h1>مشكورة كتير على وقتك يا بانة الله يعطيكي العافية</h1>
             <div className={styles.images}>
