@@ -328,7 +328,7 @@ export default function Home() {
     //   isCheck === "true" ? setClick(true) : setClick(false);
     // }
     sendEmail();
-    handleFire();
+    // handleFire();
     // let numberSpin = 0;
     // if (!localStorage.getItem("spinCounts")) {
     //   localStorage.setItem("spinCounts", 1);
@@ -431,18 +431,18 @@ export default function Home() {
   if (true) {
     return (
       <main className={styles.main}>
-       
-       
-        <div class="loading">
-        <div class="moon">
+{/*        
+       <div class="moon">
       <div class="star-1"></div>
       <div class="star-2"></div> 
     </div>
+        <div class="loading">
+     
         <Image src="/girl_sleeping.png" width={250} height={250} alt="girl sleeping"/>
         
        
           <h1>تصبحي على خير بانة</h1>
-        </div>
+        </div> */}
       </main>
     );
   }
