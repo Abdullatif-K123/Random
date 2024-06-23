@@ -434,19 +434,14 @@ export default function Home() {
        
        
         <div class="loading">
+        <div class="moon">
+      <div class="star-1"></div>
+      <div class="star-2"></div> 
+    </div>
         <Image src="/girl_sleeping.png" width={250} height={250} alt="girl sleeping"/>
-          <svg width="84px" height="68px">
-            <polyline
-              points="0.157 23.954, 14 23.954, 21.843 48, 43 0, 50 24, 64 24"
-              id="back"
-            ></polyline>
-            <polyline
-              points="0.157 23.954, 14 23.954, 21.843 48, 43 0, 50 24, 64 24"
-              id="front"
-            ></polyline>
-          </svg>
+        
        
-          <h1>تصبحي على سعاده وهداة بال دكتورتي السوبر هيرو الجميلة</h1>
+          <h1>تصبحي على خير تصبحي على راحة تصبحي على سعادة تصبحي تصبحي على كل ما تتمني الله يحققلك كلشي بتتمنيه الله وان شاء الله يسعدك ودائما اشوف الفرح في وجهك وقلبك تصبحي على خير</h1>
         </div>
       </main>
     );
