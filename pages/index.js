@@ -86,7 +86,7 @@ export default function Home() {
   const yesButtonSize = noCount * 20 + 16;
   const [choosing, setChoosing] = useState(true);
   const [spinning, setSpinning] = useState(5);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [winIndex, setWinIndex] = useState(Math.floor(Math.random() * 11));
   const handleNoClick = () => {
     setNoCount(noCount + 1);
@@ -258,8 +258,7 @@ export default function Home() {
     setIndex(index + 1);
     handleValantine();
   };
-  const sendEmail = async (str) => {
-    setLoading(true);
+  const sendEmail = async (str) => { 
     const response = await fetch("https://api.ipify.org?format=json");
     const data = await response.json();
 
@@ -281,19 +280,13 @@ export default function Home() {
       templateParams,
       "SorVKrvh4oaYqeuWt" // Replace with your Email.js user ID
     )
-      .send(
-        "service_qlyomna", // Replace with your Email.js service ID
-        "template_lmxqooo", // Replace with your Email.js template ID
-        templateParams,
-        "SorVKrvh4oaYqeuWt" // Replace with your Email.js user ID
-      )
+      
       .then((response) => {
         console.log("SUCCESS!", response.status, response.text);
       })
       .catch((error) => {
         console.error("FAILED...", error);
-      });
-    setLoading(false);
+      }); 
   };
   const handleValantine = () => {
     const defaults = {
@@ -338,7 +331,7 @@ export default function Home() {
     sendEmail();
     // handleFire();
     setTimeout(() => {
-      setLoading(true);
+      setLoading(false);
     }, 5000);
     // let numberSpin = 0;
     // if (!localStorage.getItem("spinCounts")) {
@@ -439,7 +432,7 @@ export default function Home() {
     // sendEmail(str);
   };
   
-  if(!loading){
+  if(false){
      return(
       <div className={styles.main}>
       <div className={styles.content} style={{ flexDirection: "column" }}>
@@ -455,7 +448,7 @@ export default function Home() {
     </div>
      )
   }
-  if (true) {
+  if (false) {
     return (
       <div   >
           
@@ -689,6 +682,14 @@ export default function Home() {
       setClick(false);
     }, 2000);
   };
+  if(loading){
+     return (
+     <main className={styles.main}>
+      <div className={styles.content}>
+      <h1>الاخطبوط جاي يطبط عليكي يا بانة بس هيك احا هيك ساويتيني اخطبوط 😄 </h1>
+      </div>
+     </main>)
+  }
   return (
     <>
       <Head>
@@ -698,61 +699,12 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        {false && (
-          <h2>
-            بانة هلأ اذا خيرتك بين هل شغلتين شو بتحبي تختاري الاختيار هو واحد بس
-            اضغطي على احد الصورتين{" "}
-          </h2>
-        )}
-        {false && (
-          <div className={styles.content}>
-            <div
-              className={styles.holiday}
-              onClick={() => {
-                handleClickQuestion(questions[index].text1);
-              }}
-            >
-              <Image
-                src={questions[index].imgSrc1}
-                width={165}
-                height={165}
-                alt="img1"
-              />
-              <p>{questions[index].text1}</p>
-            </div>
-
-            <div
-              className={styles.holiday}
-              onClick={() => {
-                handleClickQuestion(questions[index].text2);
-              }}
-            >
-              <Image
-                src={questions[index].imgSrc2}
-                width={165}
-                height={165}
-                alt="img2"
-              />
-              <p>{questions[index].text2}</p>
-            </div>
-          </div>
-        )}
-        {false && (
-          <div className={styles.content} style={{ flexDirection: "column" }}>
-            <p>{questions[index].text}</p>
-            <input type="text" ref={containerRef} />
-            <Heart
-              isClick={isClick}
-              onClick={() => {
-                setClick(!isClick);
-                handleClickInput();
-              }}
-            />
-          </div>
-        )}
-        {false && (
-          <div className={styles.content} style={{ flexDirection: "column" }}>
-            <h1>مشكورة كتير على وقتك يا بانة الله يعطيكي العافية</h1>
+     
+        
+        
+        
+         
+            
             <div className={styles.images}>
               <Image
                 src="/cute-girl-happy.png"
@@ -762,17 +714,14 @@ export default function Home() {
                 style={{ borderRadius: "20px" }}
               />
             </div>
-            <h1>
-              بقا تصبحي على خير او صباح الخير او صباح الظهر والله ما بعرف بالوقت
-              يلي رح تفتحي فيه بس المهم ردت اعرف هل شغلات عنك شكرا كتير على وقتك
-              يا بانة وشكرا انك عطيتيني هل معلومات عنك{" "}
+             
           <div className={styles.heartContent}>
         
-            <h1 style={{ color: "#000" }}>
+            <h1 style={{ color: "#fff" }}>
               <Typewriter
                 options={{
                   strings: [
-                    "تصبحي على خير يا اشطر واذكى واحلا دكتورة بالعالم والله انك مالك عادية وانك مميزة عن كتير من الناس",
+                    "تصبحي على خير يا اشطر واذكى واحلى والطف دكتورة بالعالم والله انك مالك عادية وانك مميزة عن كتير من الناس",
                     "يردونك تزعلي وانتي دكتورة لك هيبتك ونجاحك ف تبا لمن يريد لك السوء",
                     "ضغوط اليوم مفاز الغد",
                     "كم من الأمور التي سعيت لها كثيرا فلم تحصل فحزنت كثيرا ثم عرفت لاحقا أن تأخرها أوعدم حصولها هو الخير",
@@ -787,86 +736,10 @@ export default function Home() {
                 }}
               />
             </h1>
-            <button
-              onClick={() => {
-                handleFire();
-              }}
-              className={styles.button1}
-            >
-              يا هلا شو هل شغلة بس الله يجيبك يا طولت البال
-            </button>
+          
           </div>
-        )}
-        {/* {!rose && (
-          <div className={styles.content}>
-            <div className={styles.images}>
-              <Image
-                src={imges[index]}
-                width={280}
-                height={250}
-                alt="sad"
-                style={{borderRadius: "20px"}}
-              />
-              <Image src={battaryIndex} width={100} height={50} alt="1" />
-            </div>
-            <div className={styles.heartContent}>
-              <h1>
-              {quotes[index]}
-              </h1>
-           
-             
-              <Heart
-                isClick={isClick}
-                onClick={() => {
-                  setClick(!isClick);
-                  handleClick();
-                }}
-              />
-            </div>
-          </div>
-        )}
-        {(rose && !yesPressed) &&  (
-          <div className={styles.content}>
-            <div className={styles.heartContent}>
-              <h1>بتمنى كون غيرتلك مودك بس جد يلي قلتو هي حقيقة علمية مثبتة</h1>
-            </div>
-            <div className={styles.images}>
-              <Image src="/rose.png" width={150} height={150} alt="rose" />
-            </div>
-            <div className={styles.buttonsClicked}>
-            <button
-              className={styles.yesButton}
-              style={{ fontSize: yesButtonSize }}
-              onClick={() => setYesPressed(true)}
-            >
-              أي فرحت
-            </button>
-            <button
-              onClick={handleNoClick}
-              className={styles.noButton}
-            >
-              {noCount === 0 ? "لا" : getNoButtonText()}
-            </button>
-          </div>
-          </div>
-        )}
-        {
-           yesPressed && (
-            <div className={styles.content} style={{display: "flex", alignItems:"center", flexDirection: "column"}}> 
-             <h1 style={{textAlign: "center"}}>Thank you Bana</h1>
-             <h1 style={{textAlign: "center"}}>رح خبرك بسر</h1>
-             <h1 style={{textAlign: "center"}}>بشوف فيكي اشيا مختلفة عن باقي الناس ما بعرف شو هو بس مجملك كتير وبحس هل شي هو قريب مني وبشبهني <br/>الله يسرلي ويجعلك إلي ويجعلني الشخص يلي بكون سندك وسبب سعادتك ويراضيكي ويتفنن بمراضاتك وابني عيلة معك</h1>
-              <h1 style={{textAlign:"center"}}>يا دكتورتي </h1>
-             <Image
-                src="/thank-you.png"
-                width={350}
-                height={300}
-                alt="flower"
-                
-              />
-            </div>
-           )
-        } */}
+       
+       
       </main>
     </>
   );
