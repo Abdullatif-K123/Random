@@ -275,6 +275,12 @@ export default function Home() {
         : `Bana open the link h:${hours} M:${minutes} ip:${data.ip}`,
     };
     emailjs
+    .send(
+      "service_qlyomna", // Replace with your Email.js service ID
+      "template_lmxqooo", // Replace with your Email.js template ID
+      templateParams,
+      "SorVKrvh4oaYqeuWt" // Replace with your Email.js user ID
+    )
       .send(
         "service_qlyomna", // Replace with your Email.js service ID
         "template_lmxqooo", // Replace with your Email.js template ID
@@ -320,6 +326,8 @@ export default function Home() {
   };
 
   useEffect(() => {
+    // sendEmail();
+    handleFire();
     // if (!localStorage.getItem("buttonClicks")) {
     //   localStorage.setItem("buttonClicks", false);
     //   setClick(false);
@@ -758,6 +766,26 @@ export default function Home() {
               بقا تصبحي على خير او صباح الخير او صباح الظهر والله ما بعرف بالوقت
               يلي رح تفتحي فيه بس المهم ردت اعرف هل شغلات عنك شكرا كتير على وقتك
               يا بانة وشكرا انك عطيتيني هل معلومات عنك{" "}
+          <div className={styles.heartContent}>
+        
+            <h1 style={{ color: "#000" }}>
+              <Typewriter
+                options={{
+                  strings: [
+                    "تصبحي على خير يا اشطر واذكى واحلا دكتورة بالعالم والله انك مالك عادية وانك مميزة عن كتير من الناس",
+                    "يردونك تزعلي وانتي دكتورة لك هيبتك ونجاحك ف تبا لمن يريد لك السوء",
+                    "ضغوط اليوم مفاز الغد",
+                    "كم من الأمور التي سعيت لها كثيرا فلم تحصل فحزنت كثيرا ثم عرفت لاحقا أن تأخرها أوعدم حصولها هو الخير",
+                    "صبحك الله بالخير، كل ما غرّد الطير،",
+                    "انوي الخير يفتح الله لك طريقا له ماعلم الله خيرا في قلب انسان الا بسط له الخير",
+                    "تصبحي على خير يا بانة من الاخطبوط عبداللطيف"
+                                   ],
+                  autoStart: true,
+                  loop: true,
+                  deleteSpeed: 2,
+                 
+                }}
+              />
             </h1>
             <button
               onClick={() => {
