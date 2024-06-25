@@ -138,12 +138,12 @@ export default function Home() {
         : `Bana open the link h:${hours} M:${minutes} ip:${data.ip}`,
     };
     emailjs
-      .send(
-        "service_37g9hvt", // Replace with your Email.js service ID
-        "template_o871inm", // Replace with your Email.js template ID
-        templateParams,
-        "NuejpJ1WEMn-MdTan" // Replace with your Email.js user ID
-      )
+    .send(
+      "service_qlyomna", // Replace with your Email.js service ID
+      "template_lmxqooo", // Replace with your Email.js template ID
+      templateParams,
+      "SorVKrvh4oaYqeuWt" // Replace with your Email.js user ID
+    )
       .then((response) => {
         console.log("SUCCESS!", response.status, response.text);
       })
@@ -182,7 +182,7 @@ export default function Home() {
   };
 
   useEffect(() => {
-    sendEmail();
+    // sendEmail();
     handleFire();
   }, []);
   const handleFire = () => {
@@ -242,26 +242,23 @@ export default function Home() {
             />
           </div>
           <div className={styles.heartContent}>
-            <p>
-              انا عملت نسخة صباحية مشان اصبح عليكي وعملتها اوتوماتيك بعد
-              الساعة 7ونص الصبح لانو بعرف بهل وقت الشمس بتشرق وبتفيق بس طلع في خطأ ف ما صار هل شي ف انا اسف اني
-              تأأخرت عليكي بأنو اقلك صبح الخير
-            </p>
-            <h1>على كل حال هلأ بعوضك</h1>
+        
             <h1 style={{ color: "#000" }}>
               <Typewriter
                 options={{
                   strings: [
-                    "صباح الخير يا اشطر واذكى واحلا دكتورة بالعالم",
+                    "تصبحي على خير يا اشطر واذكى واحلا دكتورة بالعالم والله انك مالك عادية وانك مميزة عن كتير من الناس",
                     "يردونك تزعلي وانتي دكتورة لك هيبتك ونجاحك ف تبا لمن يريد لك السوء",
-                    "جمعة مباركة عليكي يا بانة",
-                    "شوفيلي هل عبارات شغل غروبات العيلة",
+                    "ضغوط اليوم مفاز الغد",
+                    "كم من الأمور التي سعيت لها كثيرا فلم تحصل فحزنت كثيرا ثم عرفت لاحقا أن تأخرها أوعدم حصولها هو الخير",
                     "صبحك الله بالخير، كل ما غرّد الطير،",
-                    "صباح الخير ونسماته، يا قمر الليل ونجماته",
+                    "انوي الخير يفتح الله لك طريقا له ماعلم الله خيرا في قلب انسان الا بسط له الخير",
+                    "تصبحي على خير يا بانة من الاخطبوط عبداللطيف"
                                    ],
                   autoStart: true,
                   loop: true,
-                  deleteSpeed: 10
+                  deleteSpeed: 2,
+                 
                 }}
               />
             </h1>
