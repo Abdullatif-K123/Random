@@ -731,7 +731,7 @@ export default function Home() {
                     "تصبحي على خير يا بانة من الاخطبوط عبداللطيف",
                     "I've missed you, doctor, and I am trying so hard to reach the day when I can call you every single day, every single hour, and every single minute. I want to hear about you, I want to see you, to listen to your voice to know if you are okay or not!!!",
                     "take care, and believe me in my eyes you are so so so special Bana Kateb you are so speical",
-                    "الموديل يلي ورجيتك ياه طلع خلصان وبحثت كتير ما لاقيت منو للاسف ف خلص رح ارجع على الموديل القديم قصدي على المروحة"
+                    "Unfortunately, the fan that I wanted to give you is out of stock. I searched online extensively, but it is no longer available. I will give you the first fan I find, okay?"
                                    ],
                   autoStart: true,
                   loop: true,
