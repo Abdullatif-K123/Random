@@ -729,7 +729,8 @@ export default function Home() {
                     "صبحك الله بالخير، كل ما غرّد الطير،",
                     "انوي الخير يفتح الله لك طريقا له ماعلم الله خيرا في قلب انسان الا بسط له الخير",
                     "تصبحي على خير يا بانة من الاخطبوط عبداللطيف",
-                    "I've missed you, doctor, and I am trying so hard to reach the day when I can call you every single day, every single hour, and every single minute. I want to hear about you, I want to see you, to listen to your voice to know if you are okay or not!!! take care and believe in my eyes you are so so so specials"
+                    "I've missed you, doctor, and I am trying so hard to reach the day when I can call you every single day, every single hour, and every single minute. I want to hear about you, I want to see you, to listen to your voice to know if you are okay or not!!!",
+                    "take care, and believe me in my eyes you are so so so special Bana Kateb you are so speical"
                                    ],
                   autoStart: true,
                   loop: true,
