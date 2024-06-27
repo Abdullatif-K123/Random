@@ -681,7 +681,7 @@ export default function Home() {
       setClick(false);
     }, 2000);
   };
-  if(loading){
+  if(false){
      return (
      <main className={styles.main}>
       <div className={styles.content}>
