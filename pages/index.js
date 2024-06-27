@@ -327,8 +327,7 @@ export default function Home() {
     // } else {
     //   const isCheck = localStorage.getItem("buttonClicks");
     //   isCheck === "true" ? setClick(true) : setClick(false);
-    // }
-    sendEmail();
+    // } 
     // handleFire();
     setTimeout(() => {
       setLoading(false);
@@ -707,9 +706,9 @@ export default function Home() {
             
             <div className={styles.images}>
               <Image
-                src="/cute-girl-happy.png"
-                width={250}
-                height={250}
+                src="/girl_sleeping.png"
+                width={350}
+                height={350}
                 alt="sad"
                 style={{ borderRadius: "20px" }}
               />
@@ -721,18 +720,12 @@ export default function Home() {
               <Typewriter
                 options={{
                   strings: [
-                    "تصبحي على خير يا اشطر واذكى واحلى والطف دكتورة بالعالم والله انك مالك عادية وانك مميزة عن كتير من الناس",
-                    "يردونك تزعلي وانتي دكتورة لك هيبتك ونجاحك ف تبا لمن يريد لك السوء",
-                    "ضغوط اليوم مفاز الغد",
-                    "كم يليق بك اللباس الطبي وخاصة اللون الابيض يجعلك مشرقة وبراقة ك شروق الشمس او من قريبو ",
-                    "كم الاطفال محظوظون بأن تتابعهم طبيبة لطيفة جميلة ذكية هادئة مرحة حنونة مثلك",
-                    "صبحك الله بالخير، كل ما غرّد الطير،",
-                    "انوي الخير يفتح الله لك طريقا له ماعلم الله خيرا في قلب انسان الا بسط له الخير",
-                    "تصبحي على خير يا بانة من الاخطبوط عبداللطيف",
-                    "I've missed you, doctor, and I am trying so hard to reach the day when I can call you every single day, every single hour, and every single minute. I want to hear about you, I want to see you, to listen to your voice to know if you are okay or not!!!",
-                    "take care, and believe me in my eyes you are so so so special Bana Kateb you are so speical",
-                    "Unfortunately, the fan that I wanted to give you is out of stock. I searched online extensively, but it is no longer available. I will give you the first fan I find, okay?"
-                                   ],
+                    "Wishing the most wonderful doctor in the world a peacful night's sleep, Good night",
+                    "Close your eyes and let go of the day’s worries, Good night and have a sweet dreams",
+                    "Close your eyes and I promise you everything will be fine Bon Bon",
+                    "Good night, good night! Parting is such sweet sorrow, that I shall say good night till it be morrow",
+                    "Good night from octupos Abdullatif to the doctor the princess Bana",
+                     ],
                   autoStart: true,
                   loop: true,
                   deleteSpeed: 2,
