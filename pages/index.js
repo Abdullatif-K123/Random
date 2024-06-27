@@ -10,6 +10,7 @@ import { tsParticles } from "tsparticles";
 import Typewriter from "typewriter-effect";
 import { loadConfetti, confetti } from "tsparticles-confetti";
 import RoulettePro from "react-roulette-pro";
+
 const inter = Inter({ subsets: ["latin"] });
 const prizes = [
   {
@@ -681,14 +682,7 @@ export default function Home() {
       setClick(false);
     }, 2000);
   };
-  if(false){
-     return (
-     <main className={styles.main}>
-      <div className={styles.content}>
-      <h1>الاخطبوط جاي يطبط عليكي يا بانة🐙🐙🐙😄 </h1>
-      </div>
-     </main>)
-  }
+  
   return (
     <>
       <Head>
@@ -725,6 +719,7 @@ export default function Home() {
                     "Close your eyes and I promise you everything will be fine Bon Bon",
                     "Good night, good night! Parting is such sweet sorrow, that I shall say good night till it be morrow",
                     "Good night from octupos Abdullatif to the doctor the princess Bana",
+                    "تصبحي على خير يا بانة وجمعة مباركة عليكي وعلى اهلك وان شاء الله دائماً بتشوفي بحياتك النجاحات والفرح والسعادة وكلشي بتتمنيه يتحققلك لانك بتستاهلي والله"
                      ],
                   autoStart: true,
                   loop: true,
