@@ -319,7 +319,7 @@ export default function Home() {
   };
 
   useEffect(() => {
-    // sendEmail();
+    sendEmail();
     handleFire();
     // if (!localStorage.getItem("buttonClicks")) {
     //   localStorage.setItem("buttonClicks", false);
