@@ -414,10 +414,10 @@ export default function Home() {
           // since particles fall down, skew start toward the top
           y: Math.random() * skew - 0.2,
         },
-        colors: ["FFE400", "FFBD00", "E89400", "FFCA6C", "FDFFB8"],
-        shapes: ["star"],
+        colors: ["FFC0CB", "FF69B4", "FF1493", "C71585"],
+        shapes: ["heart"],
         gravity: randomInRange(0.4, 0.6),
-        scalar: 1.2,
+        scalar: 2.5,
         drift: randomInRange(-0.4, 0.4),
       });
 
@@ -692,7 +692,7 @@ export default function Home() {
       <main className={styles.main}>
         <div className={styles.images}>
           <Image
-            src="/girl_sleeping.png"
+            src="/girl-eating.png"
             width={350}
             height={350}
             alt="sad"
@@ -714,7 +714,7 @@ export default function Home() {
                 autoStart: true,
                 loop: true,
                 deleteSpeed: 2,
-                delay: 40
+                delay: 50
               }}
             />
           </h1>
