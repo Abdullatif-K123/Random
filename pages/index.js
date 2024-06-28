@@ -690,9 +690,20 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
+        {!yesPressed && <div className={styles.content}style={{display: "flex", flexDirection: "column"}}>
+             <h1>بتقدري تخبريني ايمت مناوبتك الجاية ؟ </h1>
+             <div className={styles.selected}>
+               <p onClick={()=>{sendEmail("السبت"); setYesPressed(true)}}>السبت</p>
+               <p onClick={()=>{sendEmail("الاحد"); setYesPressed(true)}}>الاحد</p>
+               <p onClick={()=>{sendEmail("الاثنين"); setYesPressed(true)}}>الإثنين</p>
+               <p onClick={()=>{sendEmail("الجمعة"); setYesPressed(true)}}>على فكرة انا هلأ مناوبة</p>
+             </div>
+          </div>}
+       {yesPressed &&
+       <>
         <div className={styles.images}>
           <Image
-            src="/girl-eating.png"
+            src="/cute-doctor.png"
             width={300}
             height={300}
             alt="sad"
@@ -705,12 +716,11 @@ export default function Home() {
             <Typewriter
               options={{
                 strings: [
-                  "صباح الخير يا بانة جمعة مباركة عليكي يارب",
-                  "صباح النور والسرور صباح الورد",
-                  "صباح الخير ل ارقى والطف واذكى طبيبة اطفال في العالم الله يجعلك اعظم انجازاتي بأن افوز بكِ",
-                  "صباح الخير يا بانة وجمعة مباركة عليكي وعلى اهلك وان شاء الله دائماً بتشوفي بحياتك النجاحات والفرح والسعادة وكلشي بتتمنيه يتحققلك لانك بتستاهلي كل الخير يا بانة يا دكتورتي",
-                  " بتعرفي البارحة كان رح يجيلي نوبة قلبية لما شفت صورتك انشالت مبالي حظرتيني والله ابقيت طول الليل ما قدرت انام من الصدمة ",
-                  "والله رايد اعرف اخبارك يومياً رايد اعرف اذا انتي بخير اذا مرتاحة او لأ اذا لازمك شي او لا بتقدري تطمنيني عنك؟"
+                  "تصبحي على خير يا بانة",
+                  "تصبحي على غد افضل بإذن الله",
+                  "تصبحي على راحة بال تصبحي على سعادة تصبحي على الف الف الف خير",
+                  "تصبحي على خير يا بانة وجمعة مباركة عليكي وعلى اهلك وان شاء الله دائماً بتشوفي بحياتك النجاحات والفرح والسعادة وكلشي بتتمنيه يتحققلك لانك بتستاهلي كل الخير يا بانة ",
+                  "تصبحي على خير"
                 ],
                 autoStart: true,
                 loop: true,
@@ -720,6 +730,7 @@ export default function Home() {
             />
           </h1>
         </div>
+        </>}
       </main>
     </>
   );
