@@ -690,47 +690,93 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        {!yesPressed && <div className={styles.content}style={{display: "flex", flexDirection: "column"}}>
-             <h1>طيب بانة مدام بكرا مناوبتك في مجال اعدي  </h1>
-             <div className={styles.selected}>
-               <p onClick={()=>{sendEmail("اي"); setYesPressed(true)}}>اي</p>
-               <p onClick={()=>{sendEmail("لا"); setYesPressed(true)}}>لا</p>
-               <p onClick={()=>{sendEmail("اكيد اي"); setYesPressed(true)}}>اكيد اي</p>
-               <p onClick={()=>{sendEmail("ما بتفرق معي"); setYesPressed(true)}}>ما بتفرق معي</p>
-             </div>
-          </div>}
-       {yesPressed &&
-       <>
-        <div className={styles.images}>
-          <Image
-            src="/cute-doctor.png"
-            width={300}
-            height={300}
-            alt="sad"
-            style={{ borderRadius: "20px" }}
-          />
-        </div>
+        {!yesPressed && (
+          <div
+            className={styles.content}
+            style={{ display: "flex", flexDirection: "column" }}
+          >
+            <h1>طيب بانة مدام بكرا مناوبتك في مجال اعدي </h1>
+            <div className={styles.selected}>
+              <a href="https://wa.me/+963943581098?text=Ok%20see%20you%20tomorrow%20Abdullatif">
+                {" "}
+                <p
+                  onClick={() => {
+                    sendEmail("اي");
+                    setYesPressed(true);
+                  }}
+                >
+                  اي
+                </p>
+              </a>
+              <a href="https://wa.me/+963943581098?text=Go%20To%20hell%20w%20Abdullatif">
+                {" "}
+                <p
+                  onClick={() => {
+                    sendEmail("لا");
+                    setYesPressed(true);
+                  }}
+                >
+                  لا
+                </p>
+              </a>
+              <a href="https://wa.me/+963943581098?text=Ok%20see%20you%20tomorrow%20Abdullatif">
+                {" "}
+                <p
+                  onClick={() => {
+                    sendEmail("اكيد اي");
+                    setYesPressed(true);
+                  }}
+                >
+                  اكيد اي
+                </p>
+              </a>
+              <a href="https://wa.me/+963943581098?text=Ok%20see%20you%20tomorrow%20Abdullatif">
+                {" "}
+                <p
+                  onClick={() => {
+                    sendEmail("ما بتفرق معي");
+                    setYesPressed(true);
+                  }}
+                >
+                  ما بتفرق معي
+                </p>
+              </a>
+            </div>
+          </div>
+        )}
+        {yesPressed && (
+          <>
+            <div className={styles.images}>
+              <Image
+                src="/cute-doctor.png"
+                width={300}
+                height={300}
+                alt="sad"
+                style={{ borderRadius: "20px" }}
+              />
+            </div>
 
-        <div className={styles.heartContent}>
-          <h1 style={{ color: "#fff" }}>
-            <Typewriter
-              options={{
-                strings: [
-                  "تصبحي على خير يا بانة",
-                  "تصبحي على غد افضل بإذن الله",
-                  "تصبحي على راحة بال تصبحي على سعادة تصبحي على الف الف الف خير",
-                  "تصبحي على خير يا بانة وجمعة مباركة عليكي وعلى اهلك وان شاء الله دائماً بتشوفي بحياتك النجاحات والفرح والسعادة وكلشي بتتمنيه يتحققلك لانك بتستاهلي كل الخير يا بانة ",
-                  "تصبحي على خير"
-                ],
-                autoStart: true,
-                loop: true,
-                deleteSpeed: 2,
-                delay: 50
-              }}
-            />
-          </h1>
-        </div>
-        </>}
+            <div className={styles.heartContent}>
+              <h1 style={{ color: "#fff" }}>
+                <Typewriter
+                  options={{
+                    strings: [
+                      "تصبحي على خير يا بانة",
+                      "تصبحي على غد افضل بإذن الله",
+                      "تصبحي على راحة بال تصبحي على سعادة تصبحي على الف الف الف خير",
+                      "تصبحي على خير يا بانة وجمعة مباركة عليكي وعلى اهلك وان شاء الله دائماً بتشوفي بحياتك النجاحات والفرح والسعادة وكلشي بتتمنيه يتحققلك لانك بتستاهلي كل الخير يا بانة ",
+                      "تصبحي على خير",
+                    ],
+                    autoStart: true,
+                    loop: true,
+                    deleteSpeed: 2,
+                    delay: 50,
+                  }}
+                />
+              </h1>
+            </div>
+          </>
+        )}
       </main>
     </>
   );
