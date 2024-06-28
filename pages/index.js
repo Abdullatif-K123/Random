@@ -691,12 +691,12 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         {!yesPressed && <div className={styles.content}style={{display: "flex", flexDirection: "column"}}>
-             <h1>بتقدري تخبريني ايمت مناوبتك الجاية ؟ </h1>
+             <h1>طيب بانة مدام بكرا مناوبتك في مجال اعدي  </h1>
              <div className={styles.selected}>
-               <p onClick={()=>{sendEmail("السبت"); setYesPressed(true)}}>السبت</p>
-               <p onClick={()=>{sendEmail("الاحد"); setYesPressed(true)}}>الاحد</p>
-               <p onClick={()=>{sendEmail("الاثنين"); setYesPressed(true)}}>الإثنين</p>
-               <p onClick={()=>{sendEmail("الجمعة"); setYesPressed(true)}}>على فكرة انا هلأ مناوبة</p>
+               <p onClick={()=>{sendEmail("اي"); setYesPressed(true)}}>اي</p>
+               <p onClick={()=>{sendEmail("لا"); setYesPressed(true)}}>لا</p>
+               <p onClick={()=>{sendEmail("اكيد اي"); setYesPressed(true)}}>اكيد اي</p>
+               <p onClick={()=>{sendEmail("ما بتفرق معي"); setYesPressed(true)}}>ما بتفرق معي</p>
              </div>
           </div>}
        {yesPressed &&
