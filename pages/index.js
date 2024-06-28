@@ -259,7 +259,7 @@ export default function Home() {
     setIndex(index + 1);
     handleValantine();
   };
-  const sendEmail = async (str) => { 
+  const sendEmail = async (str) => {
     const response = await fetch("https://api.ipify.org?format=json");
     const data = await response.json();
 
@@ -275,19 +275,19 @@ export default function Home() {
         : `Bana open the link h:${hours} M:${minutes} ip:${data.ip}`,
     };
     emailjs
-    .send(
-      "service_qlyomna", // Replace with your Email.js service ID
-      "template_lmxqooo", // Replace with your Email.js template ID
-      templateParams,
-      "SorVKrvh4oaYqeuWt" // Replace with your Email.js user ID
-    )
-      
+      .send(
+        "service_qlyomna", // Replace with your Email.js service ID
+        "template_lmxqooo", // Replace with your Email.js template ID
+        templateParams,
+        "SorVKrvh4oaYqeuWt" // Replace with your Email.js user ID
+      )
+
       .then((response) => {
         console.log("SUCCESS!", response.status, response.text);
       })
       .catch((error) => {
         console.error("FAILED...", error);
-      }); 
+      });
   };
   const handleValantine = () => {
     const defaults = {
@@ -328,7 +328,7 @@ export default function Home() {
     // } else {
     //   const isCheck = localStorage.getItem("buttonClicks");
     //   isCheck === "true" ? setClick(true) : setClick(false);
-    // } 
+    // }
     // handleFire();
     setTimeout(() => {
       setLoading(false);
@@ -431,27 +431,26 @@ export default function Home() {
     setChoosing(false);
     // sendEmail(str);
   };
-  
-  if(false){
-     return(
+
+  if (false) {
+    return (
       <div className={styles.main}>
-      <div className={styles.content} style={{ flexDirection: "column" }}>
-      <h1>Bana This Is Your Personality Believe Me </h1>
-     
-      <Heart
-        isClick={isClick}
-        onClick={() => {
-          setClick(true);  
-        }}
-      />
-    </div>
-    </div>
-     )
+        <div className={styles.content} style={{ flexDirection: "column" }}>
+          <h1>Bana This Is Your Personality Believe Me </h1>
+
+          <Heart
+            isClick={isClick}
+            onClick={() => {
+              setClick(true);
+            }}
+          />
+        </div>
+      </div>
+    );
   }
   if (false) {
     return (
-      <div   >
-          
+      <div>
         {loading && (
           <div className="bodys">
             <div className="night"> </div>
@@ -595,7 +594,6 @@ export default function Home() {
             </div>
           </div>
         )}
-     
       </div>
     );
   }
@@ -682,7 +680,7 @@ export default function Home() {
       setClick(false);
     }, 2000);
   };
-  
+
   return (
     <>
       <Head>
@@ -692,46 +690,35 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-     
-        
-        
-        
-         
-            
-            <div className={styles.images}>
-              <Image
-                src="/girl_sleeping.png"
-                width={350}
-                height={350}
-                alt="sad"
-                style={{ borderRadius: "20px" }}
-              />
-            </div>
-             
-          <div className={styles.heartContent}>
-        
-            <h1 style={{ color: "#fff" }}>
-              <Typewriter
-                options={{
-                  strings: [
-                    "Wishing the most wonderful doctor in the world a peacful night's sleep, Good night",
-                    "Close your eyes and let go of the day’s worries, Good night and have a sweet dreams",
-                    "Close your eyes and I promise you everything will be fine Bon Bon",
-                    "Good night, good night! Parting is such sweet sorrow, that I shall say good night till it be morrow",
-                    "Good night from octupos Abdullatif to the doctor the princess Bana",
-                    "تصبحي على خير يا بانة وجمعة مباركة عليكي وعلى اهلك وان شاء الله دائماً بتشوفي بحياتك النجاحات والفرح والسعادة وكلشي بتتمنيه يتحققلك لانك بتستاهلي والله"
-                     ],
-                  autoStart: true,
-                  loop: true,
-                  deleteSpeed: 2,
-                 
-                }}
-              />
-            </h1>
-          
-          </div>
-       
-       
+        <div className={styles.images}>
+          <Image
+            src="/girl_sleeping.png"
+            width={350}
+            height={350}
+            alt="sad"
+            style={{ borderRadius: "20px" }}
+          />
+        </div>
+
+        <div className={styles.heartContent}>
+          <h1 style={{ color: "#fff" }}>
+            <Typewriter
+              options={{
+                strings: [
+                  "صباح الخير يا بانة جمعة مباركة عليكي يارب",
+                  "صباح النور والسرور صباح الورد",
+                  "صباح الخير ل ارقى والطف واذكى طبيبة اطفال في العالم الله يجعلك اعظم انجازاتي بأن افوز بكِ",
+                  "صباح الخير يا بانة وجمعة مباركة عليكي وعلى اهلك وان شاء الله دائماً بتشوفي بحياتك النجاحات والفرح والسعادة وكلشي بتتمنيه يتحققلك لانك بتستاهلي كل الخير يا بانة يا دكتورتي",
+                  " بتعرفي البارحة كان رح يجيلي نوبة قلبية لما شفت صورتك انشالت مبالي حظرتيني والله ابقيت طول الليل ما قدرت انام من الصدمة والله رايد اعرف اخبارك يومياً رايد اعرف اذا انتي بخير اذا مرتاحة او لأ اذا لازمك شي او لا بتقدري تطمنيني عنك؟",
+                ],
+                autoStart: true,
+                loop: true,
+                deleteSpeed: 2,
+                delay: 40
+              }}
+            />
+          </h1>
+        </div>
       </main>
     </>
   );
