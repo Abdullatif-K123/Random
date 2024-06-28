@@ -11,8 +11,7 @@
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
  
   width: 100vw;
-  height: 100vh;
-  overflow: hidden !important;
+  height: 100vh; 
 }
 .main> h1{
    position: absolute;

@@ -693,8 +693,8 @@ export default function Home() {
         <div className={styles.images}>
           <Image
             src="/girl-eating.png"
-            width={350}
-            height={350}
+            width={300}
+            height={300}
             alt="sad"
             style={{ borderRadius: "20px" }}
           />
