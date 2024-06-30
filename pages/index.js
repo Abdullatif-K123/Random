@@ -411,7 +411,7 @@ export default function Home() {
         colors: ["#ffffff"],
         shapes: ["circle"],
         gravity: randomInRange(0.4, 0.6),
-        scalar: 2.5,
+        scalar: 1.5,
         drift: randomInRange(-0.4, 0.4),
       });
   
