@@ -443,7 +443,7 @@ export default function Home() {
   if (true) {
     return (
       <div>
-        {loading && (
+        
            <div className="container">
            <div className="glass"></div>
            <div className="thorns">
@@ -478,8 +478,26 @@ export default function Home() {
              <div></div>
              <div></div>
            </div>
+         
          </div>
-        )}
+         <div className={styles.heartContent} >
+              <h1 style={{ color: "#fff" }}>
+                <Typewriter
+                  options={{
+                    strings: [
+                      "تصبحي على خير يا بانة",
+                     "هي حطيتلك تلج مشان اخليكي تحسي ببرودة ",
+                     "وانتي ربحانة معي وردة قبل ف رح اهديكي ياها هون على هل طريقة حالياً",
+                     "اخيرا بقلك تصبحي على ألف خير"
+                    ],
+                    autoStart: true,
+                    loop: true,
+                    deleteSpeed: 2, 
+                  }}
+                />
+              </h1>
+            </div>
+       
       </div>
     );
   }
