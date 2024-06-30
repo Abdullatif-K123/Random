@@ -408,8 +408,8 @@ export default function Home() {
           // since particles fall down, skew start toward the top
           y: Math.random() * skew - 0.2,
         },
-        colors: ["FFC0CB", "FF69B4", "FF1493", "C71585"],
-        shapes: ["heart"],
+        colors: ["#ffffff"],
+        shapes: ["circle"],
         gravity: randomInRange(0.4, 0.6),
         scalar: 2.5,
         drift: randomInRange(-0.4, 0.4),
