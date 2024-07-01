@@ -79,9 +79,8 @@ export default function Home() {
   const containerRef = useRef(null);
   const [isClick, setClick] = useState(false);
   const [index, setIndex] = useState(0);
-  const [img, setImage] = useState("/flower-one.jpg");
-  const [battaryIndex, setBattaryIndesx] = useState("/1.webp");
   const [rose, setRose] = useState(false);
+  const [selectButton, setSelectButton] = useState("");
   const [noCount, setNoCount] = useState(0);
   const [yesPressed, setYesPressed] = useState(false);
   const yesButtonSize = noCount * 20 + 16;
@@ -330,7 +329,7 @@ export default function Home() {
     //   isCheck === "true" ? setClick(true) : setClick(false);
     // }
     // handleFire();
-   
+
     // let numberSpin = 0;
     // if (!localStorage.getItem("spinCounts")) {
     //   localStorage.setItem("spinCounts", 1);
@@ -389,16 +388,16 @@ export default function Home() {
   };
   const handleFire = () => {
     let skew = 1;
-  
+
     function randomInRange(min, max) {
       return Math.random() * (max - min) + min;
     }
-  
+
     (function frame() {
       const ticks = 200; // A fixed tick value to ensure continuous animation
-  
+
       skew = Math.max(0.8, skew - 0.001);
-  
+
       confetti({
         particleCount: 1,
         startVelocity: 0,
@@ -409,13 +408,13 @@ export default function Home() {
           y: Math.random() * skew - 0.2,
         },
         shapes: ["heart"],
-  colors: ["FFC0CB", "FF69B4", "FF1493", "C71585"],
+        colors: ["FFC0CB", "FF69B4", "FF1493", "C71585"],
         gravity: randomInRange(0.4, 0.6),
-       
-    scalar: randomInRange(1, 1.4),
+
+        scalar: randomInRange(0.4, 1),
         drift: randomInRange(-0.4, 0.4),
       });
-  
+
       requestAnimationFrame(frame);
     })();
   };
@@ -443,45 +442,79 @@ export default function Home() {
   if (true) {
     return (
       <div>
-        
-           <div className="container">
-           <div className="glass"></div>
-           <div className="thorns">
-             <div></div>
-             <div></div>
-             <div></div>
-             <div></div>
-           </div>
-           <div className="glow"></div>
-           <div className="rose-leaves">
-             <div></div>
-             <div></div>
-           </div>
-           <div className="rose-petals">
-             <div></div>
-             <div></div>
-             <div></div>
-             <div></div>
-             <div></div>
-             <div></div>
-             <div></div>
-           </div>
-           <div className="sparkles">
-             <div></div>
-             <div></div>
-             <div></div>
-             <div></div>
-             <div></div>
-             <div></div>
-             <div></div>
-             <div></div>
-             <div></div>
-             <div></div>
-           </div>
-         
-         </div>
-    
-       
+        <div className="container">
+          <div className="glass"></div>
+          {selectButton === "yes" && (
+            <>
+              {" "}
+              <div className="thorns">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+              <div className="glow"></div>
+              <div className="rose-leaves">
+                <div></div>
+                <div></div>
+              </div>
+              <div className="rose-petals">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+              <div className="sparkles">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+            </>
+          )}
+        </div>
+        <div className={styles.heartContent}>
+          <p>
+            {selectButton === ""
+              ? "سؤال بقيت شي هل غطا حلو بعد ما شلنا الوردة ؟"
+              : selectButton === "no"
+              ? "بالله عم تضحكي علاي شلون يعني بقي احلا دي يلا اختاري الخيار الوحيد لقلك قال بدي اعطيها عبرة راحت  خربت العبرة كلها"
+              : "شايفة شلون الحكي مو بالغطا الحكي بالوردة اي غطا هلأ بجيبها لهي الوردة رح تطلع حلوة بتمنى انو وصلتلك الفكرة وتصبحي على خير"}
+          </p>
+          {selectButton !== "yes" && (
+            <div style={{ display: "flex", alignItems: "center", gap: "30px" }}>
+              {selectButton !== "no" && (
+                <button
+                  className={styles.yesButton}
+                  onClick={() => {
+                    setSelectButton("no");
+                    sendEmail("بانة قالت اي ليش ما بعرف");
+                  }}
+                >
+                  اي
+                </button>
+              )}
+              <button
+                className={styles.noButton}
+                onClick={() => {
+                  setSelectButton("yes");
+                  sendEmail("بانة قالت لا");
+                }}
+              >
+                لا
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     );
   }
