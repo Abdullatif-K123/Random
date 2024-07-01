@@ -172,14 +172,15 @@
    gap: 30px;
 }
 .heartContent{
-  text-align: center;
+  position: absolute;
    display: flex;
    flex-direction: column;
    align-items: center;
-   gap: 10px;
-   -webkit-tap-highlight-color: transparent; /* Disable tap highlight */
-   position: fixed;
+   justify-content: center;   
    bottom: 10%;
+   text-align: center;
+   margin: auto;
+   width: 100%;
 }
 .heartContent > h1{
    text-align: center;
