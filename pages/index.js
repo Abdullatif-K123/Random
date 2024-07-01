@@ -319,7 +319,7 @@ export default function Home() {
   };
 
   useEffect(() => {
-    // sendEmail();
+    sendEmail();
     handleFire();
     // if (!localStorage.getItem("buttonClicks")) {
     //   localStorage.setItem("buttonClicks", false);
@@ -497,7 +497,7 @@ export default function Home() {
                   className={styles.yesButton}
                   onClick={() => {
                     setSelectButton("no");
-                    // sendEmail("بانة قالت اي ليش ما بعرف");
+                    sendEmail("بانة قالت اي ليش ما بعرف");
                   }}
                 >
                   اي
@@ -507,7 +507,7 @@ export default function Home() {
                 className={styles.noButton}
                 onClick={() => {
                   setSelectButton("yes");
-                  // sendEmail("بانة قالت لا");
+                  sendEmail("بانة قالت لا");
                 }}
               >
                 لا
