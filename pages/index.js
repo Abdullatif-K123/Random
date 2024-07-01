@@ -408,11 +408,11 @@ export default function Home() {
           // since particles fall down, skew start toward the top
           y: Math.random() * skew - 0.2,
         },
-        colors: ["#ffffff"],
-        shapes: ["circle"],
+        shapes: ["heart"],
+  colors: ["FFC0CB", "FF69B4", "FF1493", "C71585"],
         gravity: randomInRange(0.4, 0.6),
        
-    scalar: randomInRange(0.4, 1),
+    scalar: randomInRange(1, 1.4),
         drift: randomInRange(-0.4, 0.4),
       });
   
@@ -480,24 +480,7 @@ export default function Home() {
            </div>
          
          </div>
-         <div className={styles.heartContent} >
-              <h1 style={{ color: "#fff" }}>
-                <Typewriter
-                  options={{
-                    strings: [
-                      "تصبحي على خير يا بانة",
-                     "هي حطيتلك تلج مشان اخليكي تحسي ببرودة ",
-                     "وانتي ربحانة معي وردة قبل ف رح اهديكي ياها هون على هل طريقة حالياً",
-                     "اخيرا بقلك تصبحي على ألف خير",
-                     "طبعا ما مننسى صبحك الله بالخير كلما غرد الطير"
-                    ],
-                    autoStart: true,
-                    loop: true,
-                    deleteSpeed: 2, 
-                  }}
-                />
-              </h1>
-            </div>
+    
        
       </div>
     );
